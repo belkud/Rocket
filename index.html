@@ -7,7 +7,45 @@
     <title>Vite + TS</title>
   </head>
   <body>
-    <div id="app"></div>
+
+<div id="box_rocket">
+  <img id="rocket" src="public/newRocket.png" alt="">
+  <div id="fuel"></div>
+</div>
+
+<style>
+  /* body{
+    display: flex;
+  } */
+  #rocket{
+    width: 80px;
+    position: absolute;
+    transition: .1s;
+  }
+  #box_rocket{
+    width: 80px;
+    margin-top: 50%;
+    margin-left: 20%;
+    position: absolute;
+    transition: .1s;
+  }
+  #fuel {
+    background-color: greenyellow;
+    margin-top: 180px;
+    height: 17px;
+    border: 1px solid #000;
+  }
+
+  #fuel::before {
+    content: 'fuel ';
+    margin-left: -28px;
+    height: 20px;
+    width: 20px;
+    
+
+  }
+</style>
+
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
