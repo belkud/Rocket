@@ -60,6 +60,8 @@ document.addEventListener('keydown',(event)=> {
 
 
 
+
+
 refuel.addEventListener('click', ()=> {  //! заправка ракеты и обнуление параметров
   accFuel=0
   fuel.style.width = 78 + 'px'
