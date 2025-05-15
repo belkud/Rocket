@@ -7,9 +7,9 @@ let fuelScore = document.getElementById('fuelScore') as HTMLDivElement //! сч�
 let refuel = document.getElementById('refuel') as HTMLDivElement //! кнопка 'заправить'
 
 
-let acc = 0 //! по горизонтали
-let acc2 = 0 //! по вертикали
-let accFuel = 0  as any //! меняем уровень топлива
+let acc = 0 //! двигаем ракету по горизонтали
+let acc2 = 0 //! двигаем ракету по вертикали
+let accFuel = 0  as any //! меняет ширину полосы с топливом, считает процент остатка топлива 
 
 document.addEventListener('keydown',(event)=> {
   if (event.key == 'ArrowRight' || event.code == 'KeyD') {
@@ -24,33 +24,53 @@ document.addEventListener('keydown',(event)=> {
   }
   if (event.key == 'ArrowUp' || event.code == 'KeyW') {
     acc2-=10
-    accFuel+=1
     box_rocket.style.transform =  `translate(${acc}px,${acc2}px)`
     rocket.style.rotate =  0 + 'deg'
-
-    fuel.style.width =  `${77 - accFuel}px` //! меняем топливную полосу
-    
-    fuelScore.innerHTML= (100 - accFuel*1.3).toFixed(1) + ' %'
-    if (accFuel>=77) { //! создаём условие, чтобы уровень топлива не был отрицательным
-      fuelScore.innerHTML= 0 + ' %' as any
-      refuel.style.display = 'none'
-    }  
   }
   if (event.key == 'ArrowDown' || event.code == 'KeyS') {
     acc2+=10
     box_rocket.style.transform =  `translate(${acc}px,${acc2}px)`
     rocket.style.rotate =  0 + 'deg'
   }
-  if (event.code == 'KeyC') {
-    console.log('123');
-      accFuel=0
+
+  accFuel+=1 //! меняем acc при нажататии на кнопки
+  fuelScore.innerHTML= (100 - accFuel*1.3).toFixed(1) + ' %'  //! считаем остаток топлива
+
+ 
+
+  if (fuel.style.width<=60 + 'px') { //! меняем цвет полосы при уменьшении топлива
+    fuel.style.backgroundColor = 'orange'
   }
-  
+  if (fuel.style.width<=40 + 'px') {
+    fuel.style.backgroundColor = 'orangered'
+  }
+  if (fuel.style.width<=20 + 'px') {
+    fuel.style.backgroundColor = 'red'
+  }
+
+
+  if (accFuel>=77) { //! создаём условие, чтобы уровень топлива не был отрицательным
+      fuelScore.innerHTML= 0 + ' %' as any
+      refuel.style.display = 'block'
+  }  
+   fuel.style.width =  `${77 - accFuel}px` //! меняем ширину топливной полосы
 })
 
-refuel.addEventListener('click', ()=> {
+
+
+
+
+refuel.addEventListener('click', ()=> {  //! заправка ракеты и обнуление параметров
   accFuel=0
-  fuel.style.width = 80 + 'px'
+  fuel.style.width = 78 + 'px'
   fuelScore.innerHTML= 100 + ' %'
-  
+  fuel.style.backgroundColor = 'greenyellow'
+  refuel.style.display = 'none'
 })
+
+
+
+
+// setInterval(() => {
+//   accFuel+=1
+// }, 100);
