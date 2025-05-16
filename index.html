@@ -19,11 +19,14 @@
   <div id="fuelScore"></div>
   <div id="distance" style="width: 120px;"> </div>
   <div id="degree" style="width: 120px;"> </div>
-  <div id="altitude" style="width: 120px;">высота </div>
+  <div id="time" style="width: 120px;"></div>
+  <div id="altitude" style="width: 120px;"> </div>
 </div>
 
-<div id="menu" style="display: flex; margin-top: 50vh; flex-direction: column;">
+<div id="menu">
   <button id="accelerate">Accelerate</button>
+  <button id="normal">Normal</button>
+  <button id="slow_down">Slow down</button>
   <button id="refuel">Заправить ракету</button>
 </div>
 
@@ -83,28 +86,53 @@
     height: 20px;
     width: 20px;
   }
-    
-    
-  #refuel {
-    background-color: orangered;
-    height: 17px;
-    border: 1px solid #000;
-    width: 120px;
-    height: 41px;
-    text-align: center;
-    color: white;
-    /* display: none; */
-    cursor: pointer;
-    margin-top: 10px;
+  #time::before {
+    content: 'Время полёта: ';
+    margin-left: -32px;
+    height: 20px;
+    width: 20px;
   }
-  #accelerate {
+  #altitude::before {
+    content: 'Высота: ';
+    margin-left: -32px;
+    height: 20px;
+    width: 20px;
+  }
+  
+  #menu {
+    display: flex; 
+    margin-top: 50vh; 
+    flex-direction: column;
+  }
+  
+
+  #accelerate, #slow_down, #refuel, #normal {
     background-color: rgb(173, 255, 47, .8);
     width: 120px;
     color: white;
     padding: 2px;
     text-align: center;
     padding: 5px;
+    margin-top: 10px;
     cursor: pointer;
+    font-size: 1.1em;
+    border-radius: 5px;
+  }
+  #slow_down {
+    background-color: rgba(131, 36, 80, 0.8);
+  }
+    #refuel {
+    background-color: orangered;
+    /* opacity: .1; */
+    display: none;
+  }
+  #accelerate:hover, #slow_down:hover, #refuel:hover, #normal:hover {
+    background-color: red;
+    border: 2px solid white;
+    transition: .2s;
+  }
+  #normal {
+    background-color:coral;
   }
 </style>
 
