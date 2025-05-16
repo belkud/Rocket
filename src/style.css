@@ -1,3 +1,35 @@
+
+
 body {
-  background-color: lightgray;
+  background: linear-gradient(180deg, rgb(14, 14, 158), rgb(129, 129, 248));
+  min-height: 100vh;
 }
+
+
+/*! Движущиеся облака */
+#alive-sky {
+    /* background-color: rgb(17, 17, 107, .2); */
+    background-color:linear-gradient(white, blue, red) ;
+    background-image: url('public/cloud.png');
+    animation: cloud 10s linear infinite;
+    height: 280px;
+    width: 101%;
+    margin-left: -8px;
+    animation: moveSky 20s linear infinite;
+    filter: drop-shadow(0px 0px 10px aqua);
+    z-index: 1000 !important;
+
+}
+
+@keyframes moveSky { /* анимация, чтобы небо двигалось */
+    from {
+        transform: translateX(0px);
+        background-position-x: 0px;
+    }
+    to {
+        background-position-x: 500px;
+        
+    }
+}
+/*! Движущиеся облака, завершение */
+

@@ -9,13 +9,22 @@
   </head>
   <body>
 
- 
+
+
+    <div id="alive-sky"></div>
+
 <div id="box_rocket">
   <img id="rocket" src="public/newRocket.png" alt="">
   <div id="fuel"></div>
   <div id="fuelScore"></div>
-  <div id="distance"> </div>
-  <div id="refuel">Заправить ракету</div>
+  <div id="distance" style="width: 120px;"> </div>
+  <div id="degree" style="width: 120px;"> </div>
+  <div id="altitude" style="width: 120px;">высота </div>
+</div>
+
+<div id="menu" style="display: flex; margin-top: 50vh; flex-direction: column;">
+  <button id="accelerate">Accelerate</button>
+  <button id="refuel">Заправить ракету</button>
 </div>
 
 <style>
@@ -26,12 +35,13 @@
     margin-left: 20%;
     position: absolute;
     transition: .1s;
+    color: white;
   }
 
   #rocket{
     width: 80px;
     position: absolute;
-    transition: .1s;
+    transition: .5s;
   }
 
   #fuelScore {
@@ -39,6 +49,8 @@
     margin-left: -30px;
     height: 17px;
   }
+
+
   #fuel {
     background-color: greenyellow;
     margin-top: 180px;
@@ -65,21 +77,39 @@
     height: 20px;
     width: 20px;
   }
+  #degree::before {
+    content: 'Угол наклона: ';
+    margin-left: -32px;
+    height: 20px;
+    width: 20px;
+  }
     
     
   #refuel {
     background-color: orangered;
-    margin-left: 150px;
-    margin-top: -150px;
     height: 17px;
     border: 1px solid #000;
-    width: 100px;
+    width: 120px;
     height: 41px;
     text-align: center;
     color: white;
-    display: none;
+    /* display: none; */
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  #accelerate {
+    background-color: rgb(173, 255, 47, .8);
+    width: 120px;
+    color: white;
+    padding: 2px;
+    text-align: center;
+    padding: 5px;
+    cursor: pointer;
   }
 </style>
+
+
+
  <script type="module" src="src/main.ts"></script>
     <!-- <script type="module" src="/src/main.ts"></script> -->
   </body>

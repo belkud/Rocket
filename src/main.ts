@@ -5,13 +5,19 @@ let box_rocket = document.getElementById('box_rocket') as HTMLDivElement
 let fuel = document.getElementById('fuel') as HTMLDivElement //! полоса с топливом
 let fuelScore = document.getElementById('fuelScore') as HTMLDivElement //! счётчик остатка топлива
 let refuel = document.getElementById('refuel') as HTMLDivElement //! кнопка 'заправить'
-let distance = document.getElementById('distance') as HTMLDivElement //! кнопка 'заправить'
+let degree = document.getElementById('degree') as HTMLDivElement //! угол наклона
+let distance = document.getElementById('distance') as HTMLDivElement  
+
+
+let accelerate = document.getElementById('accelerate') as HTMLDivElement //! кнопка ускорения
 
 
 let acc = 0 //! двигаем ракету по горизонтали
 let acc2 = 0 //! двигаем ракету по вертикали
 let accFuel = 0  as any //! меняет ширину полосы с топливом, считает процент остатка топлива 
-// let accDistance = 0
+let accDistance = 0
+let superSpeed = 0
+
 
 document.addEventListener('keydown',(event)=> {
   if (event.key == 'ArrowRight' || event.code == 'KeyD') {
@@ -24,11 +30,14 @@ document.addEventListener('keydown',(event)=> {
     box_rocket.style.transform =  `translate(${acc}px,${acc2}px)`
     rocket.style.rotate =  -10 + 'deg'
   }
+
   if (event.key == 'ArrowUp' || event.code == 'KeyW') {
-    acc2-=10
+    acc2-=10 + superSpeed
     box_rocket.style.transform =  `translate(${acc}px,${acc2}px)`
     rocket.style.rotate =  0 + 'deg'
+    
   }
+
   if (event.key == 'ArrowDown' || event.code == 'KeyS') {
     acc2+=10
     box_rocket.style.transform =  `translate(${acc}px,${acc2}px)`
@@ -59,9 +68,11 @@ document.addEventListener('keydown',(event)=> {
       refuel.style.display = 'block'
   }  
    fuel.style.width =  `${77 - accFuel}px` //! меняем ширину топливной полосы
-  //  accFuel+=1
-  distance.innerHTML= accFuel + ' km'
+   accDistance+=1
+  distance.innerHTML= accDistance + ' km'
+  degree.innerHTML = (rocket.style.rotate).split('d').join(' d') 
 
+  console.log(accFuel);
 })
 
 
@@ -79,8 +90,7 @@ refuel.addEventListener('click', ()=> {  //! заправка ракеты и о
 })
 
 
-
-
-// setInterval(() => {
-//   accFuel+=1
-// }, 100);
+    accelerate.addEventListener('click', ()=> {  //!ускорение 
+        superSpeed=20
+       
+})
