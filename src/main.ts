@@ -5,11 +5,13 @@ let box_rocket = document.getElementById('box_rocket') as HTMLDivElement
 let fuel = document.getElementById('fuel') as HTMLDivElement //! полоса с топливом
 let fuelScore = document.getElementById('fuelScore') as HTMLDivElement //! счётчик остатка топлива
 let refuel = document.getElementById('refuel') as HTMLDivElement //! кнопка 'заправить'
+let distance = document.getElementById('distance') as HTMLDivElement //! кнопка 'заправить'
 
 
 let acc = 0 //! двигаем ракету по горизонтали
 let acc2 = 0 //! двигаем ракету по вертикали
 let accFuel = 0  as any //! меняет ширину полосы с топливом, считает процент остатка топлива 
+// let accDistance = 0
 
 document.addEventListener('keydown',(event)=> {
   if (event.key == 'ArrowRight' || event.code == 'KeyD') {
@@ -47,13 +49,19 @@ document.addEventListener('keydown',(event)=> {
   if (fuel.style.width<=20 + 'px') {
     fuel.style.backgroundColor = 'red'
   }
-
+  if (fuel.style.width<=0 + 'px') {
+    fuel.style.backgroundColor = 'greenyellow' //!от бага
+  }
+  
 
   if (accFuel>=77) { //! создаём условие, чтобы уровень топлива не был отрицательным
       fuelScore.innerHTML= 0 + ' %' as any
       refuel.style.display = 'block'
   }  
    fuel.style.width =  `${77 - accFuel}px` //! меняем ширину топливной полосы
+  //  accFuel+=1
+  distance.innerHTML= accFuel + ' km'
+
 })
 
 

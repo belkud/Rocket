@@ -9,16 +9,12 @@
   </head>
   <body>
 
-    <div>Запуск ракеты!!!!!</div>
-    <div>Запуск ракеты!!!!!</div>
-    <div>Запуск ракеты!!!!!</div>
-    <div>Запуск ракеты!!!!!</div>
-    <div>Запуск ракеты!!!!!</div>
-    <div>Запуск ракеты!!!!!</div>
+ 
 <div id="box_rocket">
   <img id="rocket" src="public/newRocket.png" alt="">
   <div id="fuel"></div>
   <div id="fuelScore"></div>
+  <div id="distance"> </div>
   <div id="refuel">Заправить ракету</div>
 </div>
 
@@ -53,6 +49,18 @@
   
   #fuel::before {
     content: 'Fuel ';
+    margin-left: -32px;
+    height: 20px;
+    width: 20px;
+  }
+  #fuelScore::before {
+    content: 'Remain: ';
+    margin-left: -2px;
+    height: 20px;
+    width: 20px;
+  }
+  #distance::before {
+    content: 'Distance: ';
     margin-left: -32px;
     height: 20px;
     width: 20px;
