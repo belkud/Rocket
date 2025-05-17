@@ -25,7 +25,7 @@ let timeFly = 0 //! таймер полета времени
 let mode = 1 //! обработка режимов
 let accAltitude = 0 //! считаем высоту
 
-document.addEventListener('keydown', function handler (event) {
+function handler (event:any) {
   if (event.key == 'ArrowRight' || event.code == 'KeyD') {
     acc+=10 * mode
     box_rocket.style.transform =  `translate(${acc}px,${acc2}px)`
@@ -73,10 +73,8 @@ document.addEventListener('keydown', function handler (event) {
   if (accFuel>=77) { //! создаём условие, чтобы уровень топлива не был отрицательным
       fuelScore.innerHTML= 0 + ' %' as any
       refuel.style.display = 'block'
-      // acc2=0
-      // acc=0
-      // console.log(acc);
-      
+   
+      document.removeEventListener('keydown', handler) //! отключаем ракету когда топливо закончилось
   }  
    fuel.style.width =  `${77 - accFuel}px` //! меняем ширину топливной полосы
    
@@ -92,13 +90,13 @@ document.addEventListener('keydown', function handler (event) {
     accAltitude=1
   }
  
-speed.innerHTML=5*mode + ' км/c'  //! записываем скорость ракеты
+speed.innerHTML=5*mode + ' km/s'  //! записываем скорость ракеты
 
 rocket.style.animation = 'none'
 
 
 
-})
+}
 
 
 setInterval(() => {  //! время полёта
@@ -115,6 +113,7 @@ refuel.addEventListener('click', ()=> {  //! заправка ракеты и о
   fuelScore.innerHTML= 100 + ' %'
   fuel.style.backgroundColor = 'greenyellow'
   refuel.style.display = 'none'
+  document.addEventListener('keydown', handler)
 })
 
 
@@ -140,12 +139,19 @@ normal.addEventListener('click', ()=> {  //!обычная скорость
         changeRocketSize()       
 })
 
- 
 
 
-document.addEventListener('click', (event)=> {
- console.log(event.clientX);
-})
+
+document.addEventListener('keydown', handler)
+
+
+
+
+
+
+// document.addEventListener('click', (event)=> {
+//  console.log(event.clientX);
+// })
 
 
 
