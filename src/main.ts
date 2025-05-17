@@ -90,10 +90,10 @@ function handler (event:any) {
     accAltitude=1
   }
  
-speed.innerHTML=5*mode + ' km/s'  //! записываем скорость ракеты
+
 
 rocket.style.animation = 'none'
-
+ 
 
 
 }
@@ -121,6 +121,7 @@ refuel.addEventListener('click', ()=> {  //! заправка ракеты и о
 
 function changeRocketSize () {  //! изменение размера ракеты при выборе режима
     rocket.style.scale = 1.2 as any
+    speed.innerHTML=5*mode + ' km/s'  //! записываем скорость ракеты
     setTimeout(() => rocket.style.scale = 1 as any, 500);
 }
 
