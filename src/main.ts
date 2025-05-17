@@ -9,6 +9,7 @@ let degree = document.getElementById('degree') as HTMLDivElement //! угол н
 let distance = document.getElementById('distance') as HTMLDivElement  
 let time = document.getElementById('time') as HTMLDivElement  
 let altitude = document.getElementById('altitude') as HTMLDivElement  //! высота
+let speed = document.getElementById('speed') as HTMLDivElement  //! высота
 
 
 let accelerate = document.getElementById('accelerate') as HTMLButtonElement //! кнопка ускорения
@@ -50,7 +51,7 @@ document.addEventListener('keydown', function handler (event) {
     accAltitude-=1* mode
   }
 
-  accFuel+=mode //! меняем acc при нажататии на кнопки
+  accFuel+=mode/3 //! меняем acc при нажататии на кнопки
   fuelScore.innerHTML= (100 - accFuel*1.3).toFixed(1) + ' %'  //! считаем остаток топлива
 
  
@@ -80,35 +81,40 @@ document.addEventListener('keydown', function handler (event) {
    fuel.style.width =  `${77 - accFuel}px` //! меняем ширину топливной полосы
    
 
-  accDistance+=mode
+  accDistance+=mode/3
   distance.innerHTML= Math.round(accDistance) + ' km' //! меняем пройденное расстояние
   degree.innerHTML = (rocket.style.rotate).split('d').join(' d') 
 
-  altitude.innerHTML = Math.round(accAltitude) + ' km'
+
+
+  altitude.innerHTML = Math.round(accAltitude/3) + ' km' //! меняем высоту ракеты
   if (accAltitude<=0) {
     accAltitude=1
   }
+ 
+speed.innerHTML=5*mode + ' км/c'  //! записываем скорость ракеты
 
-  // console.log(event );
-  // console.log(box_rocket.scrollTop);
+rocket.style.animation = 'none'
+
+
+
 })
 
 
-setInterval(() => {
+setInterval(() => {  //! время полёта
   timeFly+=1 as any
   time.innerHTML=timeFly + ' sec'
 }, 1000);
 
+
  
 
-refuel.addEventListener('click', (event)=> {  //! заправка ракеты и обнуление параметров
+refuel.addEventListener('click', ()=> {  //! заправка ракеты и обнуление параметров
   accFuel=0
   fuel.style.width = 78 + 'px'
   fuelScore.innerHTML= 100 + ' %'
   fuel.style.backgroundColor = 'greenyellow'
   refuel.style.display = 'none'
-  
-   
 })
 
 

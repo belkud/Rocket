@@ -19,8 +19,9 @@
   <div id="fuelScore"></div>
   <div id="distance" style="margin-top: 4px;"> </div>
   <div id="degree"> </div>
-  <div id="time"></div>
   <div id="altitude"> </div>
+  <div id="speed"></div>
+  <div id="time"></div>
 </div>
 
 <div id="menu">
@@ -39,6 +40,7 @@
     transition: .1s;
     color: white;
     width: 120px;
+    z-index: -1;
   }
   #fuel{
     width: 78px;
@@ -48,7 +50,16 @@
     width: 80px;
     position: absolute;
     transition: .5s;
+    animation: moveRocket 2s linear infinite;
   }
+@keyframes moveRocket {
+  0% {
+  }
+  50% {
+    margin-top: 20px;
+  }
+}
+
 
   #fuelScore {
     margin-top: 5px;
@@ -68,38 +79,35 @@
   #fuel::before {
     content: 'Fuel ';
     margin-left: -32px;
-    height: 20px;
-    width: 20px;
   }
+
   #fuelScore::before {
     content: 'Осталось: ';
     margin-left: -2px;
-    height: 20px;
-    width: 20px;
   }
+
   #distance::before {
     content: 'Растояние: ';
     margin-left: -32px;
-    height: 20px;
-    width: 20px;
   }
+
   #degree::before {
     content: 'Угол наклона: ';
     margin-left: -32px;
-    height: 20px;
-    width: 20px;
   }
+
+  #speed::before {
+    content: 'Скорость: ';
+    margin-left: -32px;
+  }
+
   #time::before {
     content: 'Время полёта: ';
     margin-left: -32px;
-    height: 20px;
-    width: 20px;
   }
   #altitude::before {
     content: 'Высота: ';
     margin-left: -32px;
-    height: 20px;
-    width: 20px;
   }
   
   #menu {
