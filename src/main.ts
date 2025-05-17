@@ -21,35 +21,35 @@ let accFuel = 0  as any //! меняет ширину полосы с топли
 let accDistance = 0
 let superSpeed = 0
 let timeFly = 0 
-let x = 0
+let mode = 1 //! обработка режимов
 
 document.addEventListener('keydown',(event)=> {
   if (event.key == 'ArrowRight' || event.code == 'KeyD') {
-    acc+=10 + superSpeed
+    acc+=10 * mode
     box_rocket.style.transform =  `translate(${acc}px,${acc2}px)`
     rocket.style.rotate =  10 + 'deg'
   }
   if (event.key == 'ArrowLeft' || event.code == 'KeyA') {
-    acc-=10 + superSpeed
+    acc-=10 * mode
     box_rocket.style.transform =  `translate(${acc}px,${acc2}px)`
     rocket.style.rotate =  -10 + 'deg'
   }
 
   if (event.key == 'ArrowUp' || event.code == 'KeyW') {
-    acc2-=10 + superSpeed
+    acc2-=10 * mode
     box_rocket.style.transform =  `translate(${acc}px,${acc2}px)`
     rocket.style.rotate =  0 + 'deg'
     
   }
 
   if (event.key == 'ArrowDown' || event.code == 'KeyS') {
-    acc2+=10+ superSpeed
+    acc2+=10 * mode
     box_rocket.style.transform =  `translate(${acc}px,${acc2}px)`
     rocket.style.rotate =  0 + 'deg'
   }
 
-  accFuel+=1 //! меняем acc при нажататии на кнопки
-  fuelScore.innerHTML= (100 - accFuel*1.3*x).toFixed(1) + ' %'  //! считаем остаток топлива
+  accFuel+=mode //! меняем acc при нажататии на кнопки
+  fuelScore.innerHTML= (100 - accFuel*1.3).toFixed(1) + ' %'  //! считаем остаток топлива
 
  
 
@@ -72,11 +72,13 @@ document.addEventListener('keydown',(event)=> {
       refuel.style.display = 'block'
   }  
    fuel.style.width =  `${77 - accFuel}px` //! меняем ширину топливной полосы
-   accDistance+=1
-  distance.innerHTML= accDistance + ' km'
+   
+
+  accDistance+=mode
+  distance.innerHTML= accDistance + ' km' //! меняем пройденное расстояние
   degree.innerHTML = (rocket.style.rotate).split('d').join(' d') 
 
-  console.log(x);
+  console.log(mode);
 console.log(superSpeed);
 })
 
@@ -99,20 +101,19 @@ refuel.addEventListener('click', ()=> {  //! заправка ракеты и о
 
 accelerate.addEventListener('click', ()=> {  //!ускорение 
         superSpeed=20       
-        let x = 3
+        mode = 2
 })
 
 slow_down.addEventListener('click', ()=> {  //!замедление 
         superSpeed=-5
-        let x = .5       
+        mode = .5       
       })
       
       normal.addEventListener('click', ()=> {  //!обычная скорость 
         superSpeed=0       
-        let x = 1       
+        mode = 1       
 })
 
  
 
-// создать переменную let x =1, в другом 2 -в третьем - 0,5, которая будет точнее измерять значения
 

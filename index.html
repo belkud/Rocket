@@ -17,10 +17,10 @@
   <img id="rocket" src="public/newRocket.png" alt="">
   <div id="fuel"></div>
   <div id="fuelScore"></div>
-  <div id="distance" style="width: 120px;"> </div>
-  <div id="degree" style="width: 120px;"> </div>
-  <div id="time" style="width: 120px;"></div>
-  <div id="altitude" style="width: 120px;"> </div>
+  <div id="distance" style="margin-top: 4px;"> </div>
+  <div id="degree"> </div>
+  <div id="time"></div>
+  <div id="altitude"> </div>
 </div>
 
 <div id="menu">
@@ -33,12 +33,15 @@
 <style>
 
   #box_rocket{
-    width: 80px;
     margin-top: 500px;
     margin-left: 20%;
     position: absolute;
     transition: .1s;
     color: white;
+    width: 120px;
+  }
+  #fuel{
+    width: 78px;
   }
 
   #rocket{
@@ -69,13 +72,13 @@
     width: 20px;
   }
   #fuelScore::before {
-    content: 'Remain: ';
+    content: 'Осталось: ';
     margin-left: -2px;
     height: 20px;
     width: 20px;
   }
   #distance::before {
-    content: 'Distance: ';
+    content: 'Растояние: ';
     margin-left: -32px;
     height: 20px;
     width: 20px;
