@@ -167,6 +167,7 @@ document.addEventListener('keydown', handler)
 //!!!!!!!!!!!!!! Всё что касаемо взрыва!
 let explotionTimer = document.getElementById('explotionTimer') as HTMLDivElement 
 let cross = document.getElementById('cross') as HTMLDivElement 
+let SVG_rocket = document.getElementById('SVG_rocket') as HTMLDivElement 
 let explotion = document.getElementById('explotion') as HTMLImageElement // ! gif взрыва 
 let rocketFastKiller = document.getElementById('rocketFastKiller') as HTMLImageElement // ! gif взрыва 
 
@@ -193,4 +194,10 @@ setTimeout(() => {
  
 }, 17000);
 
+setTimeout(() => {
+  SVG_rocket.style.display = 'block'
+}, 2500);
 
+setTimeout(() => {
+  SVG_rocket.style.display = 'none'
+}, 3500);
