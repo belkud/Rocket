@@ -13,8 +13,10 @@
 
     <div id="alive-sky"></div>
 
-<div id="box_rocket">
-  <img id="rocket" src="public/newRocket.png" alt="">
+<img id="rocketFastKiller" src="public/rocketFastKiller.gif" alt="">
+
+  <div id="box_rocket">
+      <img id="rocket" src="public/newRocket.png" alt="">
   <div id="fuel"></div>
   <div id="fuelScore"></div>
   <div id="distance" style="margin-top: 4px;"> </div>
@@ -23,6 +25,13 @@
   <div id="speed">5 km/s</div>
   <div id="time"></div>
 </div>
+
+<div id="cross_box">
+  <div id="explotionTimer"></div>
+  <div id="cross">+</div>
+  <img id="explotion" src="public/explothion.gif" style="z-index: -1000;" alt="">
+</div>
+          
 
 <div id="menu">
   <button id="accelerate">Accelerate</button>
@@ -40,7 +49,7 @@
     transition: .1s;
     color: white;
     width: 120px;
-    z-index: -1;
+    z-index: 1;
   }
   #fuel{
     width: 78px;
@@ -112,7 +121,7 @@
   
   #menu {
     display: flex; 
-    margin-top: 50vh; 
+    margin-top: 30vh; 
     flex-direction: column;
   }
   
@@ -145,6 +154,66 @@
   #normal {
     background-color:coral;
   }
+
+
+  #cross_box {
+    margin-top: 30vh;
+    margin-left: 50%;
+  }
+  #explotionTimer {
+    position: absolute;
+    z-index: 10;
+    font-size: 2em;
+    color: white;
+    margin-top: 90px;
+    margin-left: 45px;
+}
+#explotion {
+  margin-left: -100px;
+  margin-top: -50px;
+  display: none;
+}
+
+  #cross {
+    position: absolute;
+    color: red;
+    font-size: 12em;
+    animation: moveCross 30s linear;
+    /* transform-origin: 50px 50px; */
+  }
+  
+  @keyframes moveCross {
+    from {
+
+    }
+    to {
+        rotate: 1080deg
+    }
+  }
+  
+#rocketFastKiller {
+  width: 250px;
+  position: absolute;
+  animation: rocketExploation 15s linear forwards;
+  z-index: -5;
+  /* transform: translate(100px, 0px); */
+}
+
+@keyframes rocketExploation {
+  0% {
+    
+  }
+  20% {
+    rotate: 360deg
+  }
+  100% {
+    rotate: 390deg;
+    margin-top: 27vh;
+    margin-left: 43%;
+    }
+  }
+
+
 </style>
 
 

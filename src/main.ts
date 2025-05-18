@@ -160,3 +160,37 @@ document.addEventListener('keydown', handler)
 //  console.log(`окна  Х=${event.clientX}px У=${event.clientY}px`)
 //   console.log(`документа Х=${event.pageX}px У=${event.pageY}px`)
 // })
+
+
+
+
+//!!!!!!!!!!!!!! Всё что касаемо взрыва!
+let explotionTimer = document.getElementById('explotionTimer') as HTMLDivElement 
+let cross = document.getElementById('cross') as HTMLDivElement 
+let explotion = document.getElementById('explotion') as HTMLImageElement // ! gif взрыва 
+let rocketFastKiller = document.getElementById('rocketFastKiller') as HTMLImageElement // ! gif взрыва 
+
+
+
+let explotionAcc = 15 as any
+let inter = setInterval(() => {
+  explotionAcc-=1
+  explotionTimer.innerHTML=explotionAcc
+}, 1000);
+
+setTimeout( ()=>clearInterval(inter), 15000);
+
+setTimeout(() => {
+  cross.style.display = 'none'
+  explotionTimer.style.display = 'none'
+  explotion.style.display = 'block'
+  box_rocket.style.display = 'none'
+  rocketFastKiller.style.display = 'none'
+}, 15000);
+
+setTimeout(() => {
+  explotion.style.display = 'none'
+ 
+}, 17000);
+
+

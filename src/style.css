@@ -4,6 +4,7 @@ body {
   background: linear-gradient(180deg, rgb(14, 14, 158), rgb(129, 129, 248));
   min-height: 100vh;
   overflow: hidden;
+  background: black;
 }
 
 
