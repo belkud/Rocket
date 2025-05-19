@@ -13,8 +13,11 @@
 
     <div id="alive-sky"></div>
 
+<!-- Ракета-перехватчик -->
 <img id="rocketFastKiller" src="public/rocketFastKiller.gif" alt="">
 
+
+<!-- ракета управляемая пользователем -->
   <div id="box_rocket">
       <img id="rocket" src="public/newRocket.png" alt="">
   <div id="fuel"></div>
@@ -26,28 +29,43 @@
   <div id="time"></div>
 </div>
 
-<div id="SVG_rocket">SVG Rocket</div>  <!-- ракета с подрывом-->
-<div id="cross_box"> <!-- крестик-цель -->
+
+<!-- надпись SVG Rocket-->
+<div id="SVG_rocket">SVG Rocket</div>  
+
+
+<!-- крестик-цель -->
+<div id="cross_box"> 
   <div id="explotionTimer"></div>
   <div id="cross">+</div>
   <img id="explotion" src="public/explothion.gif" style="z-index: -1000;" alt="">
 </div>
 
-<div id="menu"> <!-- ракета управляемая пользователем -->
-  <button id="accelerate">Accelerate</button>
-  <button id="normal">Normal</button>
+
+<!-- управление ракетой -->
+<div id="menu"> 
   <button id="slow_down">Slow down</button>
+  <button id="normal">Normal</button>
+  <button id="accelerate">Accelerate</button>
+  <!-- <button id="interceptorRocket">Ракета-перехватчик</button> -->
   <button id="refuel">Заправить ракету</button>
 </div>
 
 
-
+<div style="margin-top: 150px; color: lightgray; position: fixed; top:65vh;">
+  <h3>Управление ракетой:</h3>
+  <div>'A', 'W', 'S', 'D' - перемещение <br> (или стрелками)</div>
+  <div>Кнопки 1, 2, 3 - режим полёта</div>
+  <div>Пробел - заправка </div>
+</div>
 
 
 
 <style>
 
   #box_rocket{
+    /* top: 300px; */
+    /* left: 20%; */
     margin-top: 300px;
     margin-left: 20%;
     position: absolute;
@@ -131,7 +149,7 @@
   }
   
 
-  #accelerate, #slow_down, #refuel, #normal {
+  #accelerate, #slow_down, #refuel, #normal, #interceptorRocket {
     background-color: rgb(173, 255, 47, .8);
     width: 120px;
     color: white;
@@ -148,10 +166,11 @@
   }
     #refuel {
     background-color: orangered;
-    /* opacity: .1; */
     display: none;
   }
-  #accelerate:hover, #slow_down:hover, #refuel:hover, #normal:hover {
+
+
+  #accelerate:hover, #slow_down:hover, #refuel:hover, #normal:hover, #interceptorRocket:hover {
     background-color: red;
     border: 2px solid white;
     transition: .2s;
@@ -159,7 +178,9 @@
   #normal {
     background-color:coral;
   }
-
+  #interceptorRocket {
+    background-color: brown;
+  }
 
   #cross_box {
     margin-top: 30vh;
@@ -237,9 +258,9 @@
   }
 
   #SVG_rocket {
-    color: aliceblue;
+    color: aliceblue !important;
     position: absolute;
-    margin-top: -30vh;
+    margin-top: 12vh;
     margin-left: 48%;
     font-size: 2em;
     text-shadow: 0px 2px 5px red;

@@ -72,11 +72,15 @@ function handler (event:any) {
 
   if (accFuel>=77) { //! создаём условие, чтобы уровень топлива не был отрицательным
       fuelScore.innerHTML= 0 + ' %' as any
-      refuel.style.display = 'block'
-   
+      refuel.style.display = 'block'   
       document.removeEventListener('keydown', handler) //! отключаем ракету когда топливо закончилось
+  
   }  
-   fuel.style.width =  `${77 - accFuel}px` //! меняем ширину топливной полосы
+    if (event.code == 'Space') {
+      document.addEventListener('keydown', handler) //! отключаем ракету когда топливо закончилось
+
+    }
+  fuel.style.width =  `${77 - accFuel}px` //! меняем ширину топливной полосы
    
 
   accDistance+=mode/3
@@ -92,10 +96,26 @@ function handler (event:any) {
  
 
 
-rocket.style.animation = 'none'
+rocket.style.animation = 'none' //! убираем анимацию движения ракеты на месте
  
 
+  if (event.code == 'Space') { //! Заправляем ракету через 'backSpace' (пробел)
+    addFuel()
+  }
+  if (event.code == 'Digit1') {  //! кнопка '1' - замедление
+    mode = .5  
+    changeRocketSize()  
+  }
+  if (event.code == 'Digit2') {  //! кнопка '2' - нормальный режим
+    mode = 1
+    changeRocketSize()  
+  }
+  if (event.code == 'Digit3') {  //! кнопка '3' - ускорение
+    mode = 2
+    changeRocketSize()  
+  }
 
+ 
 }
 
 
@@ -107,15 +127,17 @@ setInterval(() => {  //! время полёта
 
  
 
-refuel.addEventListener('click', ()=> {  //! заправка ракеты и обнуление параметров
+refuel.addEventListener('click', addFuel) //! Кнопка 'заправить ракету'
+
+
+function addFuel() { //! функция заправки ракеты и обнуление параметров
   accFuel=0
-  fuel.style.width = 78 + 'px'
+  fuel.style.width = 78 + 'px' 
   fuelScore.innerHTML= 100 + ' %'
   fuel.style.backgroundColor = 'greenyellow'
   refuel.style.display = 'none'
   document.addEventListener('keydown', handler)
-})
-
+}
 
 
 
@@ -125,27 +147,30 @@ function changeRocketSize () {  //! изменение размера ракет
     setTimeout(() => rocket.style.scale = 1 as any, 500);
 }
 
-accelerate.addEventListener('click', ()=> {  //!ускорение 
-        mode = 2
-        changeRocketSize()
-})
 
 slow_down.addEventListener('click', ()=> {  //!замедление 
         mode = .5  
         changeRocketSize()    
-      })
+})
       
 normal.addEventListener('click', ()=> {  //!обычная скорость   
         mode = 1
         changeRocketSize()       
 })
 
-
-
+accelerate.addEventListener('click', ()=> {  //!ускорение 
+        mode = 2
+        changeRocketSize()
+       
+})
 
 document.addEventListener('keydown', handler)
 
 
+// document.addEventListener('keydown', (e)=> {
+//   console.log(e);
+  
+// })
 
 
 
@@ -169,9 +194,8 @@ let explotionTimer = document.getElementById('explotionTimer') as HTMLDivElement
 let cross = document.getElementById('cross') as HTMLDivElement 
 let SVG_rocket = document.getElementById('SVG_rocket') as HTMLDivElement 
 let explotion = document.getElementById('explotion') as HTMLImageElement // ! gif взрыва 
-let rocketFastKiller = document.getElementById('rocketFastKiller') as HTMLImageElement // ! gif взрыва 
-
-
+let rocketFastKiller = document.getElementById('rocketFastKiller') as HTMLImageElement // ! Ракета-перехватчик 
+// let interceptorRocket = document.getElementById('interceptorRocket') as HTMLButtonElement // ! Кнопка запуска ракеты-перехватчика
 
 let explotionAcc = 15 as any
 let inter = setInterval(() => {
@@ -204,3 +228,7 @@ setTimeout(() => {
 setTimeout(() => {
   SVG_rocket.style.display = 'none'
 }, 3500);
+
+interceptorRocket.addEventListener('click', ()=> {
+})
+
