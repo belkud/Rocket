@@ -190,9 +190,12 @@ setTimeout(() => {
 }, 15000);
 
 setTimeout(() => {
+  explotion.style.scale = 2 as any
+}, 17100);
+
+setTimeout(() => {
   explotion.style.display = 'none'
- 
-}, 17000);
+}, 19200);
 
 setTimeout(() => {
   SVG_rocket.style.display = 'block'
