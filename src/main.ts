@@ -195,7 +195,7 @@ let cross = document.getElementById('cross') as HTMLDivElement
 let SVG_rocket = document.getElementById('SVG_rocket') as HTMLDivElement 
 let explotion = document.getElementById('explotion') as HTMLImageElement // ! gif взрыва 
 let rocketFastKiller = document.getElementById('rocketFastKiller') as HTMLImageElement // ! Ракета-перехватчик 
-// let interceptorRocket = document.getElementById('interceptorRocket') as HTMLButtonElement // ! Кнопка запуска ракеты-перехватчика
+let interceptorRocket = document.getElementById('interceptorRocket') as HTMLButtonElement // ! Кнопка запуска ракеты-перехватчика
 
 let explotionAcc = 15 as any
 let inter = setInterval(() => {
@@ -228,6 +228,9 @@ setTimeout(() => {
 setTimeout(() => {
   SVG_rocket.style.display = 'none'
 }, 3500);
+
+
+// let interceptorRocket = document.querySelector('#interceptorRocket')
 
 interceptorRocket.addEventListener('click', ()=> {
 })
