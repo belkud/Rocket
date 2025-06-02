@@ -167,18 +167,6 @@ accelerate.addEventListener('click', ()=> {  //!ускорение
 document.addEventListener('keydown', handler)
 
 
-// document.addEventListener('keydown', (e)=> {
-//   console.log(e);
-  
-// })
-
-
-
-
-// document.addEventListener('click', (event)=> {
-//  console.log(event.clientX);
-// })
-
 
 
 // document.addEventListener('mousemove', function (event) {
@@ -192,12 +180,17 @@ document.addEventListener('keydown', handler)
 //!!!!!!!!!!!!!! Всё что касаемо взрыва!
 let explotionTimer = document.getElementById('explotionTimer') as HTMLDivElement 
 let cross = document.getElementById('cross') as HTMLDivElement 
+let cross_box = document.getElementById('cross_box') as HTMLDivElement 
 let SVG_rocket = document.getElementById('SVG_rocket') as HTMLDivElement 
 let explotion = document.getElementById('explotion') as HTMLImageElement // ! gif взрыва 
 let rocketFastKiller = document.getElementById('rocketFastKiller') as HTMLImageElement // ! Ракета-перехватчик 
 let interceptorRocket = document.getElementById('interceptorRocket') as HTMLButtonElement // ! Кнопка запуска ракеты-перехватчика
 
 let explotionAcc = 15 as any
+interceptorRocket.addEventListener('click', ()=> {
+  rocketFastKiller.style.display='block'
+  cross_box.style.display='block'
+
 let inter = setInterval(() => {
   explotionAcc-=1
   explotionTimer.innerHTML=explotionAcc
@@ -230,8 +223,7 @@ setTimeout(() => {
 }, 3500);
 
 
-// let interceptorRocket = document.querySelector('#interceptorRocket')
 
-interceptorRocket.addEventListener('click', ()=> {
+
 })
 
