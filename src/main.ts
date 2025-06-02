@@ -1,6 +1,6 @@
 import './style.css'
 
-let rocket = document.getElementById('rocket') as HTMLImageElement
+let rocket = document.querySelector('.rocket') as HTMLImageElement
 let box_rocket = document.getElementById('box_rocket') as HTMLDivElement
 let fuel = document.getElementById('fuel') as HTMLDivElement //! полоса с топливом
 let fuelScore = document.getElementById('fuelScore') as HTMLDivElement //! счётчик остатка топлива
@@ -96,8 +96,6 @@ function handler (event:any) {
  
 
 
-rocket.style.animation = 'none' //! убираем анимацию движения ракеты на месте
- 
 
   if (event.code == 'Space') { //! Заправляем ракету через 'backSpace' (пробел)
     addFuel()
@@ -115,8 +113,31 @@ rocket.style.animation = 'none' //! убираем анимацию движен
     changeRocketSize()  
   }
 
+  
+rocket.style.animation = 'none' //! убираем анимацию движения ракеты на месте
  
+setTimeout(() => {
+    rocket.classList.add('moveRocket2')
+  }, 3000);
+  rocket.classList.remove('moveRocket2')
+  
+console.log(box_rocket.style.transform);
+
+
+console.log(event);
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 setInterval(() => {  //! время полёта
@@ -146,6 +167,7 @@ function changeRocketSize () {  //! изменение размера ракет
     speed.innerHTML=5*mode + ' km/s'  //! записываем скорость ракеты
     setTimeout(() => rocket.style.scale = 1 as any, 500);
 }
+
 
 
 slow_down.addEventListener('click', ()=> {  //!замедление 
@@ -221,9 +243,5 @@ setTimeout(() => {
 setTimeout(() => {
   SVG_rocket.style.display = 'none'
 }, 3500);
-
-
-
-
 })
 
