@@ -10,7 +10,6 @@
   <body>
 
 
-
     <div id="alive-sky"></div>
 
 <!-- Ракета-перехватчик -->
@@ -18,8 +17,11 @@
 
 
 <!-- ракета управляемая пользователем -->
-  <div id="box_rocket">
-      <img class="rocket" src="public/newRocket.png" alt="">
+<div id="box_rocket">
+  <div id="transport">
+    <img class="rocket rocket2" src="public/newRocket.png" alt="">
+    <img class="shattle rocket " src="public/Shattle.gif" alt="">
+  </div>
   <div id="fuel"></div>
   <div id="fuelScore"></div>
   <div id="distance" style="margin-top: 4px;"> </div>
@@ -28,6 +30,31 @@
   <div id="speed">5 km/s</div>
   <div id="time"></div>
 </div>
+
+
+
+
+
+
+  <!-- <div id="checkDiv" style="background-color: gray; 
+  width: 300px; height: 200px; margin: 25px; padding: 20px; border: 25px solid; 
+  box-sizing: border-box;
+  overflow: scroll;
+  position: absolute;
+  margin-top: 100px;
+  ">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus totam molestiae nobis culpa atque odio
+    dignissimos qui, quia fugiat enim praesentium quam, ab officiis ratione tenetur? Harum reiciendis repellendus
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus totam molestiae nobis culpa atque odio
+    dignissimos qui, quia fugiat enim praesentium quam, ab officiis ratione tenetur? Harum reiciendis repellendus
+    temporibus?
+  </div> -->
+
+
+
+
+
+
 
 <!-- надпись SVG Rocket-->
 <!-- <div id="SVG_rocket">SVG Rocket</div>   -->
@@ -43,9 +70,10 @@
 
 <!-- управление ракетой -->
 <div id="menu"> 
-  <button id="slow_down">Slow down</button>
+  <button id="slow_down">Замедление</button>
   <button id="normal">Normal</button>
-  <button id="accelerate">Accelerate</button>
+  <button id="accelerate">Ускорение</button>
+  <button id="change_transport">Выбор ракеты</button>
   <button id="interceptorRocket">Запуск перехватчика</button>
   <button id="refuel">Заправить ракету</button>
 </div>
@@ -65,13 +93,14 @@
   #box_rocket{
     /* top: 300px; */
     /* left: 20%; */
-    margin-top: 300px;
+    /* margin-top: 300px; */
     margin-left: 20%;
     position: absolute;
     transition: .1s;
     color: white;
     width: 120px;
     z-index: 1;
+    /* border: 1px solid red; */
   }
   #fuel{
     width: 78px;
@@ -82,6 +111,15 @@
     position: absolute;
     transition: .5s;
     animation: moveRocket 2s linear infinite;
+  }
+  .shattle {
+    position: absolute;
+    transition: .5s;
+    animation: moveRocket 2s linear infinite;
+    display: none;
+    width: 190px;
+    margin-left: -70px;
+    margin-top: -20px;
   }
   .moveRocket2 {
     animation: moveRocket 2s linear infinite !important;
@@ -152,13 +190,13 @@
   
   #menu {
     display: flex; 
-    margin-top: 30vh; 
+    margin-top: 25vh; 
     flex-direction: column;
     z-index: 10;
   }
   
 
-  #accelerate, #slow_down, #refuel, #normal, #interceptorRocket {
+  #accelerate, #slow_down, #refuel, #normal, #change_transport, #interceptorRocket {
     background-color: rgb(173, 255, 47, .8);
     width: 130px;
     color: white;
@@ -179,8 +217,8 @@
   }
 
 
-  #accelerate:hover, #slow_down:hover, #refuel:hover, #normal:hover, #interceptorRocket:hover {
-    background-color: red;
+  #accelerate:hover, #slow_down:hover, #refuel:hover, #change_transport:hover, #normal:hover, #interceptorRocket:hover {
+    background: red;
     border: 2px solid white;
     transition: .2s;
   }
@@ -189,6 +227,9 @@
   }
   #interceptorRocket {
     background-color: brown;
+  }
+  #change_transport {
+    background: linear-gradient(45deg, red, blue);
   }
 
   #cross_box {

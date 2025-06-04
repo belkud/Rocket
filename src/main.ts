@@ -1,10 +1,11 @@
 import './style.css'
 
 let rocket = document.querySelector('.rocket') as HTMLImageElement
-let box_rocket = document.getElementById('box_rocket') as HTMLDivElement
+let shattle = document.querySelector('.shattle') as HTMLImageElement
+let box_rocket = document.querySelector('#box_rocket') as HTMLDivElement
 let fuel = document.getElementById('fuel') as HTMLDivElement //! полоса с топливом
 let fuelScore = document.getElementById('fuelScore') as HTMLDivElement //! счётчик остатка топлива
-let refuel = document.getElementById('refuel') as HTMLDivElement //! кнопка 'заправить'
+let refuel = document.getElementById('refuel') as HTMLButtonElement //! кнопка 'заправить'
 let degree = document.getElementById('degree') as HTMLDivElement //! угол наклона
 let distance = document.getElementById('distance') as HTMLDivElement  
 let time = document.getElementById('time') as HTMLDivElement  
@@ -15,6 +16,27 @@ let speed = document.getElementById('speed') as HTMLDivElement  //! высота
 let accelerate = document.getElementById('accelerate') as HTMLButtonElement //! кнопка ускорения
 let slow_down = document.getElementById('slow_down') as HTMLButtonElement //! кнопка замедления
 let normal = document.getElementById('normal') as HTMLButtonElement //! кнопка замедления
+
+let transport = document.getElementById('transport') as HTMLDivElement //! div  с картинками
+let change_transport = document.getElementById('change_transport') as HTMLButtonElement //! выбор летательного средства
+
+change_transport.addEventListener('click', ()=> {
+  let transport1 = transport.children[0] 
+  let transport2 = transport.children[1] 
+if (transport1.style.display == 'block') {
+  transport1.style.display = 'none'
+  transport2.style.display = 'block'
+} else {
+  transport1.style.display = 'block'
+  transport2.style.display = 'none'
+}
+
+console.log(123);
+})
+
+
+
+// let newTrans = document.createElement('div')
 
 
 let acc = 0 //! двигаем ракету по горизонтали
@@ -30,18 +52,26 @@ function handler (event:any) {
     acc+=10 * mode
     box_rocket.style.transform =  `translate(${acc}px,${acc2}px)`
     rocket.style.rotate =  10 + 'deg'
+    shattle.style.rotate =  10 + 'deg'
   }
   if (event.key == 'ArrowLeft' || event.code == 'KeyA') {
     acc-=10 * mode
     box_rocket.style.transform =  `translate(${acc}px,${acc2}px)`
     rocket.style.rotate =  -10 + 'deg'
+    shattle.style.rotate =  -10 + 'deg'
   }
 
-  if (event.key == 'ArrowUp' || event.code == 'KeyW') {
-    acc2-=10 * mode
-    box_rocket.style.transform =  `translate(${acc}px,${acc2}px)`
-    rocket.style.rotate =  0 + 'deg'
-    accAltitude+=1* mode
+  if (event.key == 'ArrowUp' || event.code == 'KeyW' && box_rocket.offsetTop>=10) {
+   // if (box_rocket.offsetTop<=10) { //! ограничение передвижения элемента!!!!!!! ракета!!!!!!!!!
+     acc2-=10 * mode
+     box_rocket.style.transform =  `translate(${acc}px,${acc2}px)`
+     rocket.style.rotate =  0 + 'deg'
+     shattle.style.rotate =  0 + 'deg'
+     accAltitude+=1* mode
+     // let computedStyle = getComputedStyle(box_rocket)
+     // console.log(computedStyle.transform);
+     
+   // }
   }
 
   if (event.key == 'ArrowDown' || event.code == 'KeyS') {
@@ -121,21 +151,10 @@ setTimeout(() => {
   }, 3000);
   rocket.classList.remove('moveRocket2')
   
-console.log(box_rocket.style.transform);
+// console.log(box_rocket.style.transform);
 
 
-console.log(event);
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -244,4 +263,56 @@ setTimeout(() => {
   SVG_rocket.style.display = 'none'
 }, 3500);
 })
+
+
+
+
+
+
+// console.log(getComputedStyle(document.body));
+
+
+
+
+
+
+
+// //!!!!!!!!!!!! Размеры и прокрутка элементов!!!!!!!!!!!!!
+
+
+
+// let checkDiv = document.querySelector('#checkDiv') as HTMLDivElement
+// console.log(checkDiv.clientWidth);  
+// console.log(checkDiv.clientHeight); //! видимая внутренняя высота (сам текст)
+// console.log(checkDiv.offsetHeight); //! видимая общая высота
+// console.log(checkDiv.scrollHeight); //! высота вместе с невидимой частью элемента
+// console.log(checkDiv.scrollTop); //! 
+// console.log(checkDiv.offsetTop); //! высота от начала родителя (страницы)
+// console.log(checkDiv.clientTop); // border элемента
+
+
+
+// let accc = 0
+// document.addEventListener('keydown', (e)=> {
+//     if (checkDiv.offsetTop>=10) { //! ограничение передвижения элемента!!!!!!! ракета!!!!!!!!!
+//         accc -=10     
+        
+//     }
+//     checkDiv.style.top = accc+ 'px'
+    
+//     console.log(checkDiv.offsetTop);
+//     console.log(getComputedStyle(box_rocket).marginTop);
+    
+//     // console.log(getComputedStyle(checkDiv).length); // количество css-свойств
+// })
+
+// // console.log(document.body.offsetHeight);
+// // console.log(document.body.clientHeight);
+// // console.log(document.body.scrollHeight);
+// // console.log(document.body.scrollTop);
+ 
+
+
+
+
 
