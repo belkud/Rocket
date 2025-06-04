@@ -18,23 +18,27 @@ let slow_down = document.getElementById('slow_down') as HTMLButtonElement //! к
 let normal = document.getElementById('normal') as HTMLButtonElement //! кнопка замедления
 
 let transport = document.getElementById('transport') as HTMLDivElement //! div  с картинками
-let change_transport = document.getElementById('change_transport') as HTMLButtonElement //! выбор летательного средства
+let change_transport = document.getElementById('change_transport') as any //! выбор летательного средства
 
-change_transport.addEventListener('click', ()=> {
-  let transport1 = transport.children[0] 
-  let transport2 = transport.children[1] 
-if (transport1.style.display == 'block') {
-  transport1.style.display = 'none'
-  transport2.style.display = 'block'
-} else {
-  transport1.style.display = 'block'
-  transport2.style.display = 'none'
-}
+let transport1 = transport.children[0] 
+let transport2 = transport.children[1] 
+// change_transport.addEventListener('click', ()=> {
+// if (transport1.style.display == 'block') {
+//   transport1.style.display = 'none'
+//   transport2.style.display = 'block'
+// } else {
+//   transport1.style.display = 'block'
+//   transport2.style.display = 'none'
+// }
 
-console.log(123);
-})
+// console.log(123);
+// })
 
-
+// let clouds = document.getElementById('clouds') as any  //! движение облаков
+// let cloud = clouds.children
+// cloud[0].style.marginLeft = `${Math.random()*80}%`
+// cloud[1].style.marginLeft = `${Math.random()*80}%`
+// cloud[2].style.marginLeft = `${Math.random()*80}%`
 
 // let newTrans = document.createElement('div')
 
@@ -206,7 +210,7 @@ document.addEventListener('keydown', handler)
 
 
 
-let clouds = document.getElementById('clouds') as HTMLDivElement  //! движение облаков
+let clouds = document.getElementById('clouds') as any  //! движение облаков
 let cloud = clouds.children
 cloud[0].style.marginLeft = `${Math.random()*80}%`
 cloud[1].style.marginLeft = `${Math.random()*80}%`
