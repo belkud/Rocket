@@ -78,6 +78,7 @@ function handler (event:any) {
     acc2+=10 * mode
     box_rocket.style.transform =  `translate(${acc}px,${acc2}px)`
     rocket.style.rotate =  0 + 'deg'
+    shattle.style.rotate =  0 + 'deg'
     accAltitude-=1* mode
   }
 
@@ -150,10 +151,6 @@ setTimeout(() => {
     rocket.classList.add('moveRocket2')
   }, 3000);
   rocket.classList.remove('moveRocket2')
-  
-// console.log(box_rocket.style.transform);
-
-
 }
 
 
@@ -182,9 +179,9 @@ function addFuel() { //! функция заправки ракеты и обн�
 
 
 function changeRocketSize () {  //! изменение размера ракеты при выборе режима
-    rocket.style.scale = 1.2 as any
+    transport.style.scale = 1.2 as any
     speed.innerHTML=5*mode + ' km/s'  //! записываем скорость ракеты
-    setTimeout(() => rocket.style.scale = 1 as any, 500);
+    setTimeout(() => transport.style.scale = 1 as any, 500);
 }
 
 
@@ -206,6 +203,49 @@ accelerate.addEventListener('click', ()=> {  //!ускорение
 })
 
 document.addEventListener('keydown', handler)
+
+
+
+let clouds = document.getElementById('clouds') as HTMLDivElement  //! движение облаков
+let cloud = clouds.children
+cloud[0].style.marginLeft = `${Math.random()*80}%`
+cloud[1].style.marginLeft = `${Math.random()*80}%`
+cloud[2].style.marginLeft = `${Math.random()*80}%`
+cloud[3].style.marginLeft = `${Math.random()*80}%`
+cloud[4].style.marginLeft = `${Math.random()*80}%`
+cloud[5].style.marginLeft = `${Math.random()*80}%`
+cloud[6].style.marginLeft = `${Math.random()*80}%`
+cloud[7].style.marginLeft = `${Math.random()*80}%`
+
+// cloud[0].style.animationDelay = `5s`
+// cloud[1].style.animationDelay = `3s`
+// cloud[2].style.animationDelay = `1s`
+// cloud[3].style.animationDelay = `3s`
+// cloud[4].style.animationDelay = `6s`
+// cloud[5].style.animationDelay = `3s`
+// cloud[6].style.animationDelay = `8s`
+// cloud[7].style.animationDelay = `5s`
+
+setInterval(() => {
+  cloud[0].style.marginLeft = `${Math.random()*100}%`
+  cloud[1].style.marginLeft = `${Math.random()*100}%`
+  cloud[2].style.marginLeft = `${Math.random()*100}%`
+  cloud[3].style.marginLeft = `${Math.random()*100}%`
+  cloud[4].style.marginLeft = `${Math.random()*100}%`
+  cloud[5].style.marginLeft = `${Math.random()*100}%`
+  cloud[6].style.marginLeft = `${Math.random()*100}%`
+  cloud[7].style.marginLeft = `${Math.random()*100}%`
+}, 10000);
+
+
+console.log(Math.random()*100);
+
+
+// console.log(clouds.children[0].style.marginLeft = '100px');
+
+
+
+
 
 
 

@@ -8,9 +8,40 @@
     <title>Vite + TS</title>
   </head>
   <body>
+<div id="clouds">
+  <img src="public/cloud.png" class="cloud" style="width: 200px;"></img>
+  <img src="public/cloud.png" class="cloud" style="top: 30vh; width: 120px;"></img>
+  <img src="public/cloud.png" class="cloud" style="top: -30vh; width: 150px;"></img>
+  <img src="public/cloud.png" class="cloud" style="top: 50vh ; width: 180px;"></img>
+  <img src="public/cloud.png" class="cloud" style="top: -20vh; width: 140px;"></img>
+  <img src="public/cloud.png" class="cloud" style="top: 30vh ; width: 160px;"></img>
+  <img src="public/cloud.png" class="cloud" style="top: -10vh; width: 130px;"></img>
+  <img src="public/cloud.png" class="cloud" style="top: 33vh; width: 130px;"></img>
+</div>
+
+<style>
+      .cloud {
+          filter: drop-shadow(0px 0px 10px aqua);
+          position: absolute;
+          animation: moveSky 10s linear infinite;
+          z-index: -10;
+      }
 
 
-    <div id="alive-sky"></div>
+
+@keyframes moveSky { /* анимация, чтобы небо двигалось */
+    from {
+      margin-top: -50vh;        
+    }
+    to {
+      margin-top: 120vh;        
+    } 
+}
+  </style>
+
+
+
+
 
 <!-- Ракета-перехватчик -->
 <img id="rocketFastKiller" src="public/rocketFastKiller.gif" alt="">
@@ -31,29 +62,7 @@
   <div id="time"></div>
 </div>
 
-
-
-
-
-
-  <!-- <div id="checkDiv" style="background-color: gray; 
-  width: 300px; height: 200px; margin: 25px; padding: 20px; border: 25px solid; 
-  box-sizing: border-box;
-  overflow: scroll;
-  position: absolute;
-  margin-top: 100px;
-  ">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus totam molestiae nobis culpa atque odio
-    dignissimos qui, quia fugiat enim praesentium quam, ab officiis ratione tenetur? Harum reiciendis repellendus
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus totam molestiae nobis culpa atque odio
-    dignissimos qui, quia fugiat enim praesentium quam, ab officiis ratione tenetur? Harum reiciendis repellendus
-    temporibus?
-  </div> -->
-
-
-
-
-
+ 
 
 
 <!-- надпись SVG Rocket-->
@@ -79,7 +88,7 @@
 </div>
 
 
-<div style="margin-top: 150px; color: lightgray; position: fixed; top:65vh; z-index: -100;">
+<div style="margin-top: 150px; color: lightgray; position: fixed; top:55vh; z-index: -100;">
   <h3>Управление ракетой:</h3>
   <div>'A', 'W', 'S', 'D' - перемещение <br> (или стрелками)</div>
   <div>Кнопки 1, 2, 3 - режим полёта</div>
@@ -92,20 +101,19 @@
 
   #box_rocket{
     /* top: 300px; */
-    /* left: 20%; */
-    /* margin-top: 300px; */
     margin-left: 20%;
     position: absolute;
     transition: .1s;
     color: white;
     width: 120px;
-    z-index: 1;
-    /* border: 1px solid red; */
+    z-index: -20;
   }
   #fuel{
     width: 78px;
   }
-
+  #transport {
+    transition: .5s;
+  }
   .rocket{
     width: 80px;
     position: absolute;
@@ -115,20 +123,18 @@
   .shattle {
     position: absolute;
     transition: .5s;
-    animation: moveRocket 2s linear infinite;
+    animation: moveRocket 3s linear infinite;
     display: none;
     width: 190px;
-    margin-left: -70px;
-    margin-top: -20px;
+    margin-left: -65px;
+    margin-top: -10px;
   }
-  .moveRocket2 {
-    animation: moveRocket 2s linear infinite !important;
-}
+ 
   @keyframes moveRocket {
     0% {
     }
     50% {
-      margin-top: 10px;
+      padding-top: 10px;
     }
   }
   
@@ -190,9 +196,9 @@
   
   #menu {
     display: flex; 
-    margin-top: 25vh; 
+    margin-top: 13vh; 
     flex-direction: column;
-    z-index: 10;
+    z-index: 200 !important;
   }
   
 

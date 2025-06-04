@@ -1,8 +1,6 @@
-
-
 body {
-  background: linear-gradient(180deg, rgb(14, 14, 158), rgb(129, 129, 248));
-  min-height: 100vh;
+  /* background: linear-gradient(180deg, rgb(14, 14, 158), rgb(129, 129, 248)); */
+  /* min-height: 100vh; */
   overflow: hidden;
   background: black;
 }
@@ -10,14 +8,14 @@ body {
 
 /*! Движущиеся облака */
 #alive-sky {
-    /* background-color: rgb(17, 17, 107, .2); */
-    background-color:linear-gradient(white, blue, red) ;
+    background-color: rgb(17, 17, 107, .2);
     background-image: url('public/cloud.png');
-    animation: cloud 10s linear infinite;
-    height: 280px;
+    position: absolute;
+    /* animation: cloud 10s linear infinite; */
+    height: 80px;
     width: 101%;
     margin-left: -8px;
-    animation: moveSky 20s linear infinite;
+    /* animation: moveSky 20s linear infinite; */
     filter: drop-shadow(0px 0px 10px aqua);
     z-index: 1000 !important;
 
@@ -33,5 +31,45 @@ body {
         
     }
 }
+/*! Движущиеся облака, завершение */
+
+
+
+/* body {
+  background: linear-gradient(180deg, rgb(14, 14, 158), rgb(129, 129, 248));
+  min-height: 100vh;
+  overflow: hidden;
+  background: black;
+  margin-top: -100px;
+} */
+
+
+/*! Движущиеся облака */
+/* #alive-sky { */
+    /* background-color: rgb(17, 17, 107, .2); */
+    /* background-color:linear-gradient(white, blue, red) ; */
+    /* background-image: url('public/cloud.png');
+    background-size: 100px;
+    animation: cloud 10s linear infinite;
+    height: 100vh;
+    width: 101%;
+    position: absolute;
+    margin-left: -8px;
+    animation: moveSky 20s linear infinite;
+    filter: drop-shadow(0px 0px 10px aqua);
+    z-index: -1000 !important;
+
+}
+
+@keyframes moveSky { /* анимация, чтобы небо двигалось */
+    /* from {
+        transform: translateY(0px);
+        background-position-y: 0px;
+    }
+    to {
+        background-position-y: 500px;
+        
+    } */
+/* } */
 /*! Движущиеся облака, завершение */
 
