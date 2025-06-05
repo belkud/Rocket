@@ -228,15 +228,19 @@ cloud[7].style.marginLeft = `${Math.random()*80}%`
 // cloud[7].style.animationDelay = `5s`
 
 setInterval(() => {
-  cloud[0].style.marginLeft = `${Math.random()*100}%`
-  cloud[1].style.marginLeft = `${Math.random()*100}%`
-  cloud[2].style.marginLeft = `${Math.random()*100}%`
-  cloud[3].style.marginLeft = `${Math.random()*100}%`
-  cloud[4].style.marginLeft = `${Math.random()*100}%`
-  cloud[5].style.marginLeft = `${Math.random()*100}%`
-  cloud[6].style.marginLeft = `${Math.random()*100}%`
-  cloud[7].style.marginLeft = `${Math.random()*100}%`
-}, 10000);
+  for (let i = 0; i < cloud.length; i++) {
+    cloud[i].style.marginLeft = `${Math.random()*100}%`
+    
+  }
+  // cloud[0].style.marginLeft = `${Math.random()*100}%`
+  // cloud[1].style.marginLeft = `${Math.random()*100}%`
+  // cloud[2].style.marginLeft = `${Math.random()*100}%`
+  // cloud[3].style.marginLeft = `${Math.random()*100}%`
+  // cloud[4].style.marginLeft = `${Math.random()*100}%`
+  // cloud[5].style.marginLeft = `${Math.random()*100}%`
+  // cloud[6].style.marginLeft = `${Math.random()*100}%`
+  // cloud[7].style.marginLeft = `${Math.random()*100}%`
+}, 20000);
 
 
 console.log(Math.random()*100);

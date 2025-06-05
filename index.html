@@ -23,7 +23,7 @@
       .cloud {
           filter: drop-shadow(0px 0px 10px aqua);
           position: absolute;
-          animation: moveSky 10s linear infinite;
+          animation: moveSky 20s linear infinite;
           z-index: -10;
       }
 
@@ -95,9 +95,38 @@
   <div>Пробел - заправка </div>
 </div>
 
+<div id="menu_for_smartphone">
+  <div>1</div>
+  <div style="margin-top: 10px; margin-left: -60px">2</div>
+  <div style="margin-top: -32px; margin-left: 60px ">3</div>
+  <div style="margin-top: 10px;">4</div>
+</div>
+
+
 
 
 <style>
+#menu_for_smartphone {
+  color: aliceblue;
+  position: absolute;
+  top: 80%;
+  left: 45%;
+}
+
+#menu_for_smartphone div {
+  border: 2px solid black;
+  width: 80px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: gray;
+  border-radius: 10px;
+  transition: .5s;
+}
+#menu_for_smartphone div:hover {
+  background-color: aqua;
+}
 
   #box_rocket{
     /* top: 300px; */
