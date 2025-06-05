@@ -96,37 +96,17 @@
 </div>
 
 <div id="menu_for_smartphone">
-  <div>1</div>
-  <div style="margin-top: 10px; margin-left: -60px">2</div>
-  <div style="margin-top: -32px; margin-left: 60px ">3</div>
-  <div style="margin-top: 10px;">4</div>
+  <div>&#8593;</div>
+  <div style="margin-top: 10px; margin-left: -60px">&#8592;</div>
+  <div style="margin-top: -32px; margin-left: 60px ">&#8594;</div>
+  <div style="margin-top: 10px;">&#8595;</div>
 </div>
 
 
 
 
 <style>
-#menu_for_smartphone {
-  color: aliceblue;
-  position: absolute;
-  top: 80%;
-  left: 45%;
-}
 
-#menu_for_smartphone div {
-  border: 2px solid black;
-  width: 80px;
-  height: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: gray;
-  border-radius: 10px;
-  transition: .5s;
-}
-#menu_for_smartphone div:hover {
-  background-color: aqua;
-}
 
   #box_rocket{
     /* top: 300px; */
@@ -357,6 +337,41 @@
     text-shadow: 0px 2px 5px red;
     display: none;
   }
+
+
+
+@media screen {
+  
+}
+
+#menu_for_smartphone {
+  color: aliceblue;
+  position: absolute;
+  top: 80%;
+  left: calc(50% - 60px);
+  margin:0 auto !important;
+}
+
+#menu_for_smartphone div {
+  border: 2px solid black;
+  width: 80px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: gray;
+  border-radius: 10px;
+  transition: .5s;
+  font-size: 1.5em;
+  font-weight: 900;
+  background-color: aqua;
+}
+#menu_for_smartphone div:hover {
+  border: 2px solid white;
+  background-color: red;
+  cursor: pointer;
+}
+
 
 </style>
 
