@@ -20,19 +20,16 @@ let normal = document.getElementById('normal') as HTMLButtonElement //! кноп
 let transport = document.getElementById('transport') as HTMLDivElement //! div  с картинками
 let change_transport = document.getElementById('change_transport') as any //! выбор летательного средства
 
-let transport1 = transport.children[0] 
-let transport2 = transport.children[1] 
-// change_transport.addEventListener('click', ()=> {
-// if (transport1.style.display == 'block') {
-//   transport1.style.display = 'none'
-//   transport2.style.display = 'block'
-// } else {
-//   transport1.style.display = 'block'
-//   transport2.style.display = 'none'
-// }
 
-// console.log(123);
-// })
+change_transport.addEventListener('click', ()=> {
+if (rocket.style.display == 'block') {
+  rocket.style.display = 'none'
+  shattle.style.display = 'block'
+} else {
+  rocket.style.display = 'block'
+  shattle.style.display = 'none'
+}
+})
 
 // let clouds = document.getElementById('clouds') as any  //! движение облаков
 // let cloud = clouds.children
@@ -150,11 +147,12 @@ function handler (event:any) {
 
   
 rocket.style.animation = 'none' //! убираем анимацию движения ракеты на месте
- 
+
+transport.classList.remove('switchAnimation')
 setTimeout(() => {
-    rocket.classList.add('moveRocket2')
-  }, 3000);
-  rocket.classList.remove('moveRocket2')
+  transport.classList.add('switchAnimation')
+}, 2000); 
+
 }
 
 
@@ -202,8 +200,7 @@ normal.addEventListener('click', ()=> {  //!обычная скорость
 
 accelerate.addEventListener('click', ()=> {  //!ускорение 
         mode = 2
-        changeRocketSize()
-       
+        changeRocketSize()       
 })
 
 document.addEventListener('keydown', handler)

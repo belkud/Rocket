@@ -50,8 +50,8 @@
 <!-- ракета управляемая пользователем -->
 <div id="box_rocket">
   <div id="transport">
-    <img class="rocket rocket2" src="public/newRocket.png" alt="">
-    <img class="shattle rocket " src="public/Shattle.gif" alt="">
+    <img class="rocket" src="public/newRocket.png" alt="">
+    <img class="shattle" src="public/Shattle.gif" alt="">
   </div>
   <div id="fuel"></div>
   <div id="fuelScore"></div>
@@ -73,7 +73,7 @@
 <div id="cross_box"> 
   <div id="explotionTimer"></div>
   <div id="cross">+</div>
-  <img id="explotion" src="public/explothion.gif" style="z-index: -1000;" alt="">
+  <img id="explotion" src="public/explothion.gif" style="z-index: -1200;" alt="">
 </div>
 
 
@@ -113,6 +113,7 @@
   }
   #transport {
     transition: .5s;
+    position: absolute;
   }
   .rocket{
     width: 80px;
@@ -128,6 +129,9 @@
     width: 190px;
     margin-left: -65px;
     margin-top: -10px;
+  }
+  .switchAnimation {
+    animation: moveRocket 3s linear infinite;
   }
  
   @keyframes moveRocket {
@@ -279,7 +283,7 @@
   width: 250px;
   position: absolute;
   animation: rocketExploation 15s linear forwards;
-  z-index: -5;
+  z-index: -1200;
   /* transform: translate(100px, 0px); */
 }
 
