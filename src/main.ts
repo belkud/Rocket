@@ -48,6 +48,127 @@ let timeFly = 0 //! таймер полета времени
 let mode = 1 //! обработка режимов
 let accAltitude = 0 //! считаем высоту
 
+
+
+//!!!!!!!!!!!!!!!!!!!!!!! Управление со смартфона!!!!!!!!!!!!!!!!!!!!!!
+
+let menu_for_smartphone = document.querySelectorAll('#menu_for_smartphone>div') as any
+menu_for_smartphone[0].addEventListener('click', ()=> {
+     acc2-=10 * mode
+     box_rocket.style.transform =  `translate(${acc}px,${acc2}px)`
+     rocket.style.rotate =  0 + 'deg'
+     shattle.style.rotate =  0 + 'deg'
+     accAltitude+=1* mode
+    parametrsOfRocket()
+})
+
+menu_for_smartphone[1].addEventListener('click', ()=> {
+  acc2-=10 * mode
+  box_rocket.style.transform =  `translate(${acc}px,${acc2}px)`
+  rocket.style.rotate =  0 + 'deg'
+  shattle.style.rotate =  0 + 'deg'
+  accAltitude+=1* mode
+  parametrsOfRocket()
+
+})
+
+menu_for_smartphone[2].addEventListener('click', ()=> {
+    acc+=10 * mode
+    box_rocket.style.transform =  `translate(${acc}px,${acc2}px)`
+    rocket.style.rotate =  10 + 'deg'
+    shattle.style.rotate =  10 + 'deg'
+    parametrsOfRocket()
+})
+menu_for_smartphone[3].addEventListener('click', ()=> {
+     acc2-=10 * mode
+     box_rocket.style.transform =  `translate(${acc}px,${acc2}px)`
+     rocket.style.rotate =  0 + 'deg'
+     shattle.style.rotate =  0 + 'deg'
+     accAltitude+=1* mode
+    parametrsOfRocket()
+})
+
+
+
+  // if (event.key == 'ArrowRight' || event.code == 'KeyD') {
+  // }
+  // if (event.key == 'ArrowLeft' || event.code == 'KeyA') {
+  //   acc-=10 * mode
+  //   box_rocket.style.transform =  `translate(${acc}px,${acc2}px)`
+  //   rocket.style.rotate =  -10 + 'deg'
+  //   shattle.style.rotate =  -10 + 'deg'
+  // }
+
+
+  // if (event.key == 'ArrowDown' || event.code == 'KeyS') {
+  //   acc2+=10 * mode
+  //   box_rocket.style.transform =  `translate(${acc}px,${acc2}px)`
+  //   rocket.style.rotate =  0 + 'deg'
+  //   shattle.style.rotate =  0 + 'deg'
+  //   accAltitude-=1* mode
+  // }
+
+function parametrsOfRocket() {
+  
+  accFuel+=mode/3 //! меняем acc при нажататии на кнопки
+  fuelScore.innerHTML= (100 - accFuel*1.3).toFixed(1) + ' %'  //! считаем остаток топлива
+
+ 
+
+  if (fuel.style.width<=60 + 'px') { //! меняем цвет полосы при уменьшении топлива
+    fuel.style.backgroundColor = 'orange'
+  }
+  if (fuel.style.width<=40 + 'px') {
+    fuel.style.backgroundColor = 'orangered'
+  }
+  if (fuel.style.width<=20 + 'px') {
+    fuel.style.backgroundColor = 'red'
+  }
+  if (fuel.style.width<=0 + 'px') {
+    fuel.style.backgroundColor = 'greenyellow' //!от бага
+  }
+  
+
+  if (accFuel>=77) { //! создаём условие, чтобы уровень топлива не был отрицательным
+      fuelScore.innerHTML= 0 + ' %' as any
+      refuel.style.display = 'block'   
+      document.removeEventListener('keydown', handler) //! отключаем ракету когда топливо закончилось
+  
+  }  
+    if (event.code == 'Space') {
+      document.addEventListener('keydown', handler) //! отключаем ракету когда топливо закончилось
+
+    }
+  fuel.style.width =  `${77 - accFuel}px` //! меняем ширину топливной полосы
+   
+
+  accDistance+=mode/3
+  distance.innerHTML= Math.round(accDistance) + ' km' //! меняем пройденное расстояние
+  degree.innerHTML = (rocket.style.rotate).split('d').join(' d') 
+
+
+
+  altitude.innerHTML = Math.round(accAltitude/3) + ' km' //! меняем высоту ракеты
+  if (accAltitude<=0) {
+    accAltitude=1
+  }
+ 
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
 function handler (event:any) {
   if (event.key == 'ArrowRight' || event.code == 'KeyD') {
     acc+=10 * mode
@@ -63,16 +184,11 @@ function handler (event:any) {
   }
 
   if (event.key == 'ArrowUp' || event.code == 'KeyW' && box_rocket.offsetTop>=10) {
-   // if (box_rocket.offsetTop<=10) { //! ограничение передвижения элемента!!!!!!! ракета!!!!!!!!!
      acc2-=10 * mode
      box_rocket.style.transform =  `translate(${acc}px,${acc2}px)`
      rocket.style.rotate =  0 + 'deg'
      shattle.style.rotate =  0 + 'deg'
      accAltitude+=1* mode
-     // let computedStyle = getComputedStyle(box_rocket)
-     // console.log(computedStyle.transform);
-     
-   // }
   }
 
   if (event.key == 'ArrowDown' || event.code == 'KeyS') {
@@ -232,22 +348,10 @@ setInterval(() => {
     cloud[i].style.marginLeft = `${Math.random()*100}%`
     
   }
-  // cloud[0].style.marginLeft = `${Math.random()*100}%`
-  // cloud[1].style.marginLeft = `${Math.random()*100}%`
-  // cloud[2].style.marginLeft = `${Math.random()*100}%`
-  // cloud[3].style.marginLeft = `${Math.random()*100}%`
-  // cloud[4].style.marginLeft = `${Math.random()*100}%`
-  // cloud[5].style.marginLeft = `${Math.random()*100}%`
-  // cloud[6].style.marginLeft = `${Math.random()*100}%`
-  // cloud[7].style.marginLeft = `${Math.random()*100}%`
 }, 20000);
 
 
 console.log(Math.random()*100);
-
-
-// console.log(clouds.children[0].style.marginLeft = '100px');
-
 
 
 
@@ -313,49 +417,6 @@ setTimeout(() => {
 
 
 
-
-// console.log(getComputedStyle(document.body));
-
-
-
-
-
-
-
-// //!!!!!!!!!!!! Размеры и прокрутка элементов!!!!!!!!!!!!!
-
-
-
-// let checkDiv = document.querySelector('#checkDiv') as HTMLDivElement
-// console.log(checkDiv.clientWidth);  
-// console.log(checkDiv.clientHeight); //! видимая внутренняя высота (сам текст)
-// console.log(checkDiv.offsetHeight); //! видимая общая высота
-// console.log(checkDiv.scrollHeight); //! высота вместе с невидимой частью элемента
-// console.log(checkDiv.scrollTop); //! 
-// console.log(checkDiv.offsetTop); //! высота от начала родителя (страницы)
-// console.log(checkDiv.clientTop); // border элемента
-
-
-
-// let accc = 0
-// document.addEventListener('keydown', (e)=> {
-//     if (checkDiv.offsetTop>=10) { //! ограничение передвижения элемента!!!!!!! ракета!!!!!!!!!
-//         accc -=10     
-        
-//     }
-//     checkDiv.style.top = accc+ 'px'
-    
-//     console.log(checkDiv.offsetTop);
-//     console.log(getComputedStyle(box_rocket).marginTop);
-    
-//     // console.log(getComputedStyle(checkDiv).length); // количество css-свойств
-// })
-
-// // console.log(document.body.offsetHeight);
-// // console.log(document.body.clientHeight);
-// // console.log(document.body.scrollHeight);
-// // console.log(document.body.scrollTop);
- 
 
 
 
