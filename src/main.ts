@@ -89,24 +89,6 @@ menu_for_smartphone[3].addEventListener('click', ()=> {
 
 
 
-  // if (event.key == 'ArrowRight' || event.code == 'KeyD') {
-  // }
-  // if (event.key == 'ArrowLeft' || event.code == 'KeyA') {
-  //   acc-=10 * mode
-  //   box_rocket.style.transform =  `translate(${acc}px,${acc2}px)`
-  //   rocket.style.rotate =  -10 + 'deg'
-  //   shattle.style.rotate =  -10 + 'deg'
-  // }
-
-
-  // if (event.key == 'ArrowDown' || event.code == 'KeyS') {
-  //   acc2+=10 * mode
-  //   box_rocket.style.transform =  `translate(${acc}px,${acc2}px)`
-  //   rocket.style.rotate =  0 + 'deg'
-  //   shattle.style.rotate =  0 + 'deg'
-  //   accAltitude-=1* mode
-  // }
-
 function parametrsOfRocket() {
   
   accFuel+=mode/3 //! меняем acc при нажататии на кнопки
