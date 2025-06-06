@@ -63,11 +63,10 @@ menu_for_smartphone[0].addEventListener('click', ()=> {
 })
 
 menu_for_smartphone[1].addEventListener('click', ()=> {
-  acc2-=10 * mode
-  box_rocket.style.transform =  `translate(${acc}px,${acc2}px)`
-  rocket.style.rotate =  0 + 'deg'
-  shattle.style.rotate =  0 + 'deg'
-  accAltitude+=1* mode
+    acc-=10 * mode
+    box_rocket.style.transform =  `translate(${acc}px,${acc2}px)`
+    rocket.style.rotate =  -10 + 'deg'
+    shattle.style.rotate =  -10 + 'deg'
   parametrsOfRocket()
 
 })
@@ -80,11 +79,11 @@ menu_for_smartphone[2].addEventListener('click', ()=> {
     parametrsOfRocket()
 })
 menu_for_smartphone[3].addEventListener('click', ()=> {
-     acc2-=10 * mode
-     box_rocket.style.transform =  `translate(${acc}px,${acc2}px)`
-     rocket.style.rotate =  0 + 'deg'
-     shattle.style.rotate =  0 + 'deg'
-     accAltitude+=1* mode
+    acc2+=10 * mode
+    box_rocket.style.transform =  `translate(${acc}px,${acc2}px)`
+    rocket.style.rotate =  0 + 'deg'
+    shattle.style.rotate =  0 + 'deg'
+    accAltitude-=1* mode
     parametrsOfRocket()
 })
 
@@ -135,10 +134,10 @@ function parametrsOfRocket() {
       document.removeEventListener('keydown', handler) //! отключаем ракету когда топливо закончилось
   
   }  
-    if (event.code == 'Space') {
-      document.addEventListener('keydown', handler) //! отключаем ракету когда топливо закончилось
+    // if (event.code == 'Space') {
+    //   document.addEventListener('keydown', handler) //! отключаем ракету когда топливо закончилось
+    // }
 
-    }
   fuel.style.width =  `${77 - accFuel}px` //! меняем ширину топливной полосы
    
 
