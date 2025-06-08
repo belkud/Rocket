@@ -329,7 +329,7 @@ setInterval(() => {
     cloud[i].style.marginLeft = `${Math.random()*100}%`
     
   }
-}, 20000);
+}, 100000);
 
 
 console.log(Math.random()*100);
@@ -395,8 +395,17 @@ setTimeout(() => {
 })
 
 
+document.addEventListener('keydown', ()=> {
+  let position = box_rocket.style.transform 
+  let left = position.split('(').join('( ').split(' ')[1]
+  let top = position.split('(').join('( ').split(' ')[2]
+console.log(parseInt(left));
+console.log(window.innerWidth);
+// console.log(parseInt(top));
+// console.log(window.innerHeight);
+// console.log(getComputedStyle(box_rocket).top);
 
-
+})
 
 
 
