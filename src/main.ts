@@ -38,7 +38,7 @@ let accAltitude = 0 //! считаем высоту
 
 
 
-change_transport.addEventListener('click', ()=> {
+change_transport.addEventListener('click', ()=> { //! смена ракеты
 if (rocket.style.display == 'block') {
   rocket.style.display = 'none'
   shattle.style.display = 'block'
@@ -48,53 +48,52 @@ if (rocket.style.display == 'block') {
 }
 })
 
-// let clouds = document.getElementById('clouds') as any  //! движение облаков
-// let cloud = clouds.children
-// cloud[0].style.marginLeft = `${Math.random()*80}%`
-// cloud[1].style.marginLeft = `${Math.random()*80}%`
-// cloud[2].style.marginLeft = `${Math.random()*80}%`
-
-// let newTrans = document.createElement('div')
-
-
-
 
 
 //!!!!!!!!!!!!!!!!!!!!!!! Управление со смартфона!!!!!!!!!!!!!!!!!!!!!!
 
 let menu_for_smartphone = document.querySelectorAll('#menu_for_smartphone>div') as any
 menu_for_smartphone[0].addEventListener('click', ()=> {
-     acc2-=10 * mode
-     box_rocket.style.transform =  `translate(${acc}px,${acc2}px)`
-     rocket.style.rotate =  0 + 'deg'
-     shattle.style.rotate =  0 + 'deg'
-     accAltitude+=1* mode
-    parametrsOfRocket()
+  if (-acc2<top) {
+    acc2-=10 * mode
+    box_rocket.style.transform =  `translate(${acc}px,${acc2}px)`
+    rocket.style.rotate =  0 + 'deg'
+    shattle.style.rotate =  0 + 'deg'
+    accAltitude+=1* mode
+   parametrsOfRocket()
+    
+  }
 })
 
 menu_for_smartphone[1].addEventListener('click', ()=> {
+  if (-acc < left) {
     acc-=10 * mode
     box_rocket.style.transform =  `translate(${acc}px,${acc2}px)`
     rocket.style.rotate =  -10 + 'deg'
     shattle.style.rotate =  -10 + 'deg'
   parametrsOfRocket()
+  }
 
 })
 
 menu_for_smartphone[2].addEventListener('click', ()=> {
+  if (acc < right) {
     acc+=10 * mode
     box_rocket.style.transform =  `translate(${acc}px,${acc2}px)`
     rocket.style.rotate =  10 + 'deg'
     shattle.style.rotate =  10 + 'deg'
     parametrsOfRocket()
+  }
 })
 menu_for_smartphone[3].addEventListener('click', ()=> {
+  if (acc2<bottom) { 
     acc2+=10 * mode
     box_rocket.style.transform =  `translate(${acc}px,${acc2}px)`
     rocket.style.rotate =  0 + 'deg'
     shattle.style.rotate =  0 + 'deg'
     accAltitude-=1* mode
     parametrsOfRocket()
+  }
 })
 
 
@@ -157,21 +156,6 @@ function parametrsOfRocket() { //! Отслеживание параметров
   
 //   let left = parseInt(getComputedStyle(box_rocket).marginLeft) //! расстояние до левой границы
  
-
-// if (left < -parseInt(positionX)) {
-//   console.log(1233333333333333333);
-  
-// }
-// console.log(-parseInt(positionX))
-// console.log(left)
-// console.log(window.innerWidth);
-// console.log(parseInt(top));
-// console.log(window.innerHeight);
-// console.log(getComputedStyle(box_rocket).top);
-
-// })
-
-
 
 
 
