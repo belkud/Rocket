@@ -13,7 +13,7 @@
 <!-- ракета управляемая пользователем -->
 <div id="box_rocket">
   <div id="transport">
-    <img class="rocket" src="public/newRocket.png" alt="">
+    <img class="rocket" style="display: block;" src="public/newRocket.png" alt="">
     <img class="shattle" src="public/Shattle.gif" alt="">
   </div>
   <div id="fuel"></div>
@@ -76,7 +76,7 @@
 <div id="cross_box"> 
   <div id="explotionTimer"></div>
   <div id="cross">+</div>
-  <img id="explotion" src="public/explothion.gif" style="z-index: -1200;" alt="">
+  <img id="explotion" src="public/explothion.gif" style="z-index: -9000;" alt="">
 </div>
 
 
@@ -109,7 +109,10 @@
 
 
 <style>
-
+/* .colorBlue{
+background-color: blue !important;
+color: red;
+} */
 
   #box_rocket{
     margin-left: calc(50% - 60px);
@@ -128,6 +131,7 @@
   #transport {
     transition: .5s;
     position: absolute;
+    /* border:  1px solid red; */
   }
   .rocket{
     width: 80px;
@@ -260,6 +264,7 @@
     margin-top: 30vh;
     margin-left: 50%;
     display: none;
+    position: absolute;
   }
   #explotionTimer {
     position: absolute;
@@ -273,6 +278,7 @@
   margin-left: -100px;
   margin-top: -50px;
   display: none;
+  z-index: -1000;
 }
 
   #cross {
@@ -372,8 +378,8 @@
   background-color: aqua;
 }
 #menu_for_smartphone div:hover {
+  /* background-color: gray; */
   border: 2px solid white;
-  background-color: red;
   cursor: pointer;
 }
 

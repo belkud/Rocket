@@ -37,7 +37,6 @@ let accAltitude = 0 //! считаем высоту
 
 
 
-
 change_transport.addEventListener('click', ()=> { //! смена ракеты
 if (rocket.style.display == 'block') {
   rocket.style.display = 'none'
@@ -46,8 +45,10 @@ if (rocket.style.display == 'block') {
   rocket.style.display = 'block'
   shattle.style.display = 'none'
 }
-})
 
+    // rocket.classList.toggle('shattle')
+  })
+  
 
 
 //!!!!!!!!!!!!!!!!!!!!!!! Управление со смартфона!!!!!!!!!!!!!!!!!!!!!!
