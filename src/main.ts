@@ -162,14 +162,14 @@ function parametrsOfRocket() { //! Отслеживание параметров
   
 function handler (event:any) {
 
-  if (event.key == 'ArrowLeft' || event.code == 'KeyA' && -acc < left) {
+  if ((event.key == 'ArrowLeft' || event.code == 'KeyA') && -acc < left) {
     acc-=10 * mode
     box_rocket.style.transform =  `translate(${acc}px,${acc2}px)`
     rocket.style.rotate =  -10 + 'deg'
     shattle.style.rotate =  -10 + 'deg'
   }
   
-  if (event.key == 'ArrowUp' || event.code == 'KeyW' && -acc2<top) {
+  if ((event.key == 'ArrowUp' || event.code == 'KeyW') && -acc2<top) {
      acc2-=10 * mode
      box_rocket.style.transform =  `translate(${acc}px,${acc2}px)`
      rocket.style.rotate =  0 + 'deg'
@@ -177,7 +177,7 @@ function handler (event:any) {
      accAltitude+=1* mode
   }
   
-  if (event.key == 'ArrowRight' || event.code == 'KeyD' && acc < right) {
+  if ((event.key == 'ArrowRight' || event.code == 'KeyD') && acc < right) {
     acc+=10 * mode
     box_rocket.style.transform =  `translate(${acc}px,${acc2}px)`
     rocket.style.rotate =  10 + 'deg'
@@ -185,7 +185,7 @@ function handler (event:any) {
     
   }
 
-  if (event.key == 'ArrowDown' || event.code == 'KeyS' && acc2<bottom) {
+  if ((event.key == 'ArrowDown' || event.code == 'KeyS') && acc2<bottom) {
     acc2+=10 * mode
     box_rocket.style.transform =  `translate(${acc}px,${acc2}px)`
     rocket.style.rotate =  0 + 'deg'
