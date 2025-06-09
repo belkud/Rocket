@@ -21,6 +21,23 @@ let transport = document.getElementById('transport') as HTMLDivElement //! div  
 let change_transport = document.getElementById('change_transport') as any //! выбор летательного средства
 
 
+let left = box_rocket.offsetLeft //! расстояние до левой границы
+let top = box_rocket.offsetTop //! расстояние до верхней границы
+let right = window.innerWidth - box_rocket.offsetLeft - parseInt(getComputedStyle(rocket).width) //! расстояние до правой границы
+let bottom = window.innerHeight - box_rocket.offsetTop - parseInt(getComputedStyle(rocket).height) //! расстояние до нижней границы
+  
+let acc = 0 //! двигаем ракету по горизонтали
+let acc2 = 0 //! двигаем ракету по вертикали
+let accFuel = 0  as any //! меняет ширину полосы с топливом, считает процент остатка топлива 
+let accDistance = 0 //! считаем пройденное расстояник
+let timeFly = 0 //! таймер полета времени
+let mode = 1 //! обработка режимов
+let accAltitude = 0 //! считаем высоту
+
+
+
+
+
 change_transport.addEventListener('click', ()=> {
 if (rocket.style.display == 'block') {
   rocket.style.display = 'none'
@@ -40,13 +57,6 @@ if (rocket.style.display == 'block') {
 // let newTrans = document.createElement('div')
 
 
-let acc = 0 //! двигаем ракету по горизонтали
-let acc2 = 0 //! двигаем ракету по вертикали
-let accFuel = 0  as any //! меняет ширину полосы с топливом, считает процент остатка топлива 
-let accDistance = 0 //! считаем пройденное расстояник
-let timeFly = 0 //! таймер полета времени
-let mode = 1 //! обработка режимов
-let accAltitude = 0 //! считаем высоту
 
 
 
@@ -89,12 +99,10 @@ menu_for_smartphone[3].addEventListener('click', ()=> {
 
 
 
-function parametrsOfRocket() {
+function parametrsOfRocket() { //! Отслеживание параметров ракеты
   
   accFuel+=mode/3 //! меняем acc при нажататии на кнопки
   fuelScore.innerHTML= (100 - accFuel*1.3).toFixed(1) + ' %'  //! считаем остаток топлива
-
- 
 
   if (fuel.style.width<=60 + 'px') { //! меняем цвет полосы при уменьшении топлива
     fuel.style.backgroundColor = 'orange'
@@ -114,8 +122,8 @@ function parametrsOfRocket() {
       fuelScore.innerHTML= 0 + ' %' as any
       refuel.style.display = 'block'   
       document.removeEventListener('keydown', handler) //! отключаем ракету когда топливо закончилось
-  
   }  
+  
     // if (event.code == 'Space') {
     //   document.addEventListener('keydown', handler) //! отключаем ракету когда топливо закончилось
     // }
@@ -135,44 +143,65 @@ function parametrsOfRocket() {
   }
  
 
-
-
-
 }
 
 
 
 
 
+// let positionY = position.split('(').join('( ').split(' ')[2] //! Позиция по оси У
+
+// document.addEventListener('keydown', ()=> {
+//   let position = box_rocket.style.transform //! общая позиция ракеты в момент перемещения
+//   let positionX = position.split('(').join('( ').split(' ')[1] //! Позиция по оси Х
+  
+//   let left = parseInt(getComputedStyle(box_rocket).marginLeft) //! расстояние до левой границы
+ 
+
+// if (left < -parseInt(positionX)) {
+//   console.log(1233333333333333333);
+  
+// }
+// console.log(-parseInt(positionX))
+// console.log(left)
+// console.log(window.innerWidth);
+// console.log(parseInt(top));
+// console.log(window.innerHeight);
+// console.log(getComputedStyle(box_rocket).top);
+
+// })
 
 
 
 
 
-
+  
 function handler (event:any) {
-  if (event.key == 'ArrowRight' || event.code == 'KeyD') {
-    acc+=10 * mode
-    box_rocket.style.transform =  `translate(${acc}px,${acc2}px)`
-    rocket.style.rotate =  10 + 'deg'
-    shattle.style.rotate =  10 + 'deg'
-  }
-  if (event.key == 'ArrowLeft' || event.code == 'KeyA') {
+
+  if (event.key == 'ArrowLeft' || event.code == 'KeyA' && -acc < left) {
     acc-=10 * mode
     box_rocket.style.transform =  `translate(${acc}px,${acc2}px)`
     rocket.style.rotate =  -10 + 'deg'
     shattle.style.rotate =  -10 + 'deg'
   }
-
-  if (event.key == 'ArrowUp' || event.code == 'KeyW' && box_rocket.offsetTop>=10) {
+  
+  if (event.key == 'ArrowUp' || event.code == 'KeyW' && -acc2<top) {
      acc2-=10 * mode
      box_rocket.style.transform =  `translate(${acc}px,${acc2}px)`
      rocket.style.rotate =  0 + 'deg'
      shattle.style.rotate =  0 + 'deg'
      accAltitude+=1* mode
   }
+  
+  if (event.key == 'ArrowRight' || event.code == 'KeyD' && acc < right) {
+    acc+=10 * mode
+    box_rocket.style.transform =  `translate(${acc}px,${acc2}px)`
+    rocket.style.rotate =  10 + 'deg'
+    shattle.style.rotate =  10 + 'deg'
+    
+  }
 
-  if (event.key == 'ArrowDown' || event.code == 'KeyS') {
+  if (event.key == 'ArrowDown' || event.code == 'KeyS' && acc2<bottom) {
     acc2+=10 * mode
     box_rocket.style.transform =  `translate(${acc}px,${acc2}px)`
     rocket.style.rotate =  0 + 'deg'
@@ -393,21 +422,6 @@ setTimeout(() => {
   SVG_rocket.style.display = 'none'
 }, 3500);
 })
-
-
-document.addEventListener('keydown', ()=> {
-  let position = box_rocket.style.transform 
-  let left = position.split('(').join('( ').split(' ')[1]
-  let top = position.split('(').join('( ').split(' ')[2]
-console.log(parseInt(left));
-console.log(window.innerWidth);
-// console.log(parseInt(top));
-// console.log(window.innerHeight);
-// console.log(getComputedStyle(box_rocket).top);
-
-})
-
-
 
 
 
