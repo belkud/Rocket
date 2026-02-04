@@ -251,16 +251,28 @@ function handler(event: KeyboardEvent) {
     transport.classList.add('switchAnimation')
   }, 2000);
 
+
+  // if (!isActivated) {
+  //   activateTime();
+  //   isActivated = true;
+  // }
 }
 
 
+// let isActivated = false;
+
+ 
 
 
-setInterval(() => {  //! время полёта
-  timeFly += 1
-  time.innerHTML = timeFly + ' sec'
-}, 1000);
 
+ 
+// function activateTime(){
+  setInterval(() => {  //! время полёта
+    timeFly += 1
+    time.innerHTML = timeFly + ' sec'
+  }, 1000);
+
+// } 
 
 
 
@@ -335,19 +347,7 @@ setInterval(() => {
 
 console.log(Math.random() * 100);
 
-
-
-
-
-
-
-// document.addEventListener('mousemove', function (event) {
-//  console.log(`окна  Х=${event.clientX}px У=${event.clientY}px`)
-//   console.log(`документа Х=${event.pageX}px У=${event.pageY}px`)
-// })
-
-
-
+ 
 
 //!!!!!!!!!!!!!! Всё что касаемо взрыва!
 const explotionTimer = document.getElementById('explotionTimer') as HTMLDivElement
@@ -361,8 +361,10 @@ const interceptorRocket = document.getElementById('interceptorRocket') as HTMLBu
 let explotionAcc = 15
 interceptorRocket.addEventListener('click', () => {
   rocketFastKiller.style.display = 'block'
+  interceptorRocket.style.background = 'rgb(147, 146, 146, .3)'
   cross_box.style.display = 'block'
-
+  interceptorRocket.disabled = true
+  interceptorRocket.innerHTML = 'Пуск произведён'
   const inter = setInterval(() => {
     explotionAcc -= 1
     explotionTimer.innerHTML = String(explotionAcc)
@@ -377,9 +379,10 @@ interceptorRocket.addEventListener('click', () => {
     box_rocket.style.display = 'none'
     rocketFastKiller.style.display = 'none'
   }, 15000);
-
+  
   setTimeout(() => {
     explotion.style.scale = '2'
+    interceptorRocket.innerHTML = 'Ракета взорвалась'
   }, 17100);
 
   setTimeout(() => {
