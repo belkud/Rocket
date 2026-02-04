@@ -7,69 +7,296 @@ body {
 
 
 /*! Движущиеся облака */
-#alive-sky {
-    background-color: rgb(17, 17, 107, .2);
-    background-image: url('public/cloud.png');
-    position: absolute;
-    /* animation: cloud 10s linear infinite; */
-    height: 80px;
-    width: 101%;
-    margin-left: -8px;
-    /* animation: moveSky 20s linear infinite; */
-    filter: drop-shadow(0px 0px 10px aqua);
-    z-index: 1000 !important;
+      .cloud {
+          filter: drop-shadow(0px 0px 10px aqua);
+          position: absolute;
+          animation: moveSky 100s linear infinite;
+          z-index: -10;
+      }
 
-}
+
 
 @keyframes moveSky { /* анимация, чтобы небо двигалось */
     from {
-        transform: translateX(0px);
-        background-position-x: 0px;
+      margin-top: -50vh;        
     }
     to {
-        background-position-x: 500px;
-        
-    }
+      margin-top: 120vh; 
+      /* transform: translateX();        */
+    } 
 }
+
+
 /*! Движущиеся облака, завершение */
 
+ 
 
-
-/* body {
-  background: linear-gradient(180deg, rgb(14, 14, 158), rgb(129, 129, 248));
-  min-height: 100vh;
-  overflow: hidden;
-  background: black;
-  margin-top: -100px;
-} */
-
-
-/*! Движущиеся облака */
-/* #alive-sky { */
-    /* background-color: rgb(17, 17, 107, .2); */
-    /* background-color:linear-gradient(white, blue, red) ; */
-    /* background-image: url('public/cloud.png');
-    background-size: 100px;
-    animation: cloud 10s linear infinite;
-    height: 100vh;
-    width: 101%;
+  #box_rocket{
+    margin-left: calc(50% - 60px);
+    /* margin-top: calc(50%); */
+    /* top: 0px; */
     position: absolute;
-    margin-left: -8px;
-    animation: moveSky 20s linear infinite;
-    filter: drop-shadow(0px 0px 10px aqua);
-    z-index: -1000 !important;
+    transition: .1s;
+    color: white;
+    width: 120px;
+    z-index: -20;
+    /* border: 1px solid red; */
+  }
+  #fuel{
+    width: 78px;
+  }
+  #transport {
+    transition: .5s;
+    position: absolute;
+    /* border:  1px solid red; */
+  }
+  .rocket{
+    width: 80px;
+    position: absolute;
+    transition: .5s;
+    animation: moveRocket 2s linear infinite;
+  }
+  .shattle {
+    position: absolute;
+    transition: .5s;
+    animation: moveRocket 3s linear infinite;
+    display: none;
+    width: 190px;
+    margin-left: -65px;
+    margin-top: -10px;
+  }
+  .switchAnimation {
+    animation: moveRocket 3s linear infinite;
+  }
+ 
+  @keyframes moveRocket {
+    0% {
+    }
+    50% {
+      padding-top: 10px;
+    }
+  }
+  
+  
+  
+  
 
+ 
+
+
+  #fuelScore {
+    margin-top: 5px;
+    margin-left: -30px;
+    height: 17px;
+  }
+
+
+  #fuel {
+    background-color: greenyellow;
+    margin-top: 180px;
+    height: 17px;
+    border: 1px solid gray;
+    transition: .1s;
+  }
+  
+  #fuel::before {
+    content: 'Fuel ';
+    margin-left: -32px;
+  }
+
+  #fuelScore::before {
+    content: 'Топливо: ';
+    margin-left: -2px;
+  }
+
+  #distance::before {
+    content: 'Расстояние: ';
+    margin-left: -32px;
+  }
+
+  #degree::before {
+    content: 'Угол наклона: ';
+    margin-left: -32px;
+  }
+
+  #speed::before {
+    content: 'Скорость: ';
+    margin-left: -32px;
+  }
+
+  #time::before {
+    content: 'Время полёта: ';
+    margin-left: -32px;
+  }
+  #altitude::before {
+    content: 'Высота: ';
+    margin-left: -32px;
+  }
+  
+  #menu {
+    display: flex; 
+    margin-top: 13vh; 
+    flex-direction: column;
+    z-index: 200 !important;
+  }
+  
+
+  #accelerate, #slow_down, #refuel, #normal, #change_transport, #interceptorRocket {
+    background-color: rgb(173, 255, 47, .8);
+    width: 130px;
+    color: white;
+    padding: 2px;
+    text-align: center;
+    padding: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 1.1em;
+    border-radius: 15px 0px;
+  }
+  #slow_down {
+    background-color: rgba(131, 36, 80, 0.8);
+  }
+    #refuel {
+    background-color: orangered;
+    display: none;
+  }
+
+
+  #accelerate:hover, #slow_down:hover, #refuel:hover, #change_transport:hover, #normal:hover, #interceptorRocket:hover {
+    background: red;
+    border: 2px solid white;
+    transition: .2s;
+  }
+  #normal {
+    background-color:coral;
+  }
+  #interceptorRocket {
+    background-color: brown;
+  }
+  #change_transport {
+    background: linear-gradient(45deg, red, blue);
+  }
+
+  #cross_box {
+    margin-top: 30vh;
+    margin-left: 50%;
+    display: none;
+    position: absolute;
+  }
+  #explotionTimer {
+    position: absolute;
+    z-index: 10;
+    font-size: 2em;
+    color: white;
+    margin-top: 90px;
+    margin-left: 45px;
+}
+#explotion {
+  margin-left: -100px;
+  margin-top: -50px;
+  display: none;
+  z-index: -1000;
 }
 
-@keyframes moveSky { /* анимация, чтобы небо двигалось */
-    /* from {
-        transform: translateY(0px);
-        background-position-y: 0px;
+  #cross {
+    position: absolute;
+    color: red;
+    font-size: 12em;
+    animation: moveCross 30s linear;
+    /* transform-origin: 50px 50px; */
+  }
+  
+  @keyframes moveCross {
+    from {
+
     }
     to {
-        background-position-y: 500px;
-        
-    } */
-/* } */
-/*! Движущиеся облака, завершение */
+        rotate: 1080deg
+    }
+  }
+  
+#rocketFastKiller {
+  display: none;
+  width: 250px;
+  position: absolute;
+  animation: rocketExploation 15s linear forwards;
+  z-index: -1200;
+  /* transform: translate(100px, 0px); */
+}
 
+@keyframes rocketExploation {
+  0% {
+    
+  }
+  5% {
+    rotate: 360deg
+  }
+  14% {
+    scale: 1;
+  }
+  18% {
+    scale: 1.5;
+  }
+  26% {
+    scale: 1;
+  }
+  50% {
+    rotate: 360deg;
+    margin-top: -5vh;
+    margin-left: 125%;
+  }
+  70% {
+    rotate: 450deg;
+    rotate: 530deg;
+  }
+  100% {
+    rotate: 530deg;
+    margin-top: 28vh;
+    margin-left: 51%;
+    }
+  }
+
+  #SVG_rocket {
+    color: aliceblue !important;
+    position: absolute;
+    margin-top: 12vh;
+    margin-left: 48%;
+    font-size: 2em;
+    text-shadow: 0px 2px 5px red;
+    display: none;
+  }
+
+
+
+@media screen {
+  
+}
+
+#menu_for_smartphone {
+  color: aliceblue;
+  position: absolute;
+  top: 80%;
+  left: calc(50% - 60px);
+  margin:0 auto !important;
+}
+
+#menu_for_smartphone div {
+  border: 2px solid black;
+  width: 80px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: gray;
+  border-radius: 10px;
+  transition: .5s;
+  /* font-size: 2.5em; */
+  font-weight: 900;
+  background-color: aqua;
+}
+#menu_for_smartphone div:hover {
+  /* background-color: gray; */
+  border: 2px solid white;
+  cursor: pointer;
+}
+ 
